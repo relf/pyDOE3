@@ -14,9 +14,10 @@ Abraham Lee.
 """
 
 import numpy as np
-from math import factorial
+from scipy import spatial
 
 __all__ = ['lhs']
+
 
 def lhs(n, samples=None, criterion=None, iterations=None):
     """
@@ -55,7 +56,7 @@ def lhs(n, samples=None, criterion=None, iterations=None):
                [ 0.85341601,  0.75460699,  0.360024  ]])
        
     A 4-factor design with 6 samples::
-    
+
         >>> lhs(4, samples=6)
         array([[ 0.27226812,  0.02811327,  0.62792445,  0.91988196],
                [ 0.76945538,  0.43501682,  0.01107457,  0.09583358],
@@ -171,7 +172,7 @@ def _lhsmaximin(n, samples, iterations, lhstype):
         else:
             Hcandidate = _lhscentered(n, samples)
         
-        d = _pdist(Hcandidate)
+        d = spatial.distance.pdist(Hcandidate, 'euclidean')
         if maxdist<np.min(d):
             maxdist = np.min(d)
             H = Hcandidate.copy()
@@ -194,51 +195,3 @@ def _lhscorrelate(n, samples, iterations):
             H = Hcandidate.copy()
     
     return H
-    
-################################################################################
-
-def _pdist(x):
-    """
-    Calculate the pair-wise point distances of a matrix
-    
-    Parameters
-    ----------
-    x : 2d-array
-        An m-by-n array of scalars, where there are m points in n dimensions.
-    
-    Returns
-    -------
-    d : array
-        A 1-by-b array of scalars, where b = m*(m - 1)/2. This array contains
-        all the pair-wise point distances, arranged in the order (1, 0), 
-        (2, 0), ..., (m-1, 0), (2, 1), ..., (m-1, 1), ..., (m-1, m-2).
-    
-    Examples
-    --------
-    ::
-    
-        >>> x = np.array([[0.1629447, 0.8616334],
-        ...               [0.5811584, 0.3826752],
-        ...               [0.2270954, 0.4442068],
-        ...               [0.7670017, 0.7264718],
-        ...               [0.8253975, 0.1937736]])
-        >>> _pdist(x)
-        array([ 0.6358488,  0.4223272,  0.6189940,  0.9406808,  0.3593699,
-                0.3908118,  0.3087661,  0.6092392,  0.6486001,  0.5358894])
-              
-    """
-    
-    x = np.atleast_2d(x)
-    assert len(x.shape)==2, 'Input array must be 2d-dimensional'
-    
-    m, n = x.shape
-    if m<2:
-        return []
-    
-    d = []
-    for i in range(m - 1):
-        for j in range(i + 1, m):
-            d.append((sum((x[j, :] - x[i, :])**2))**0.5)
-    
-    return np.array(d)
-
