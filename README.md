@@ -47,8 +47,8 @@ pip install pyDOE2
 Credits
 -------
 
-`pyDOE` was originally published by the following individuals for use with
-Scilab:
+`pyDOE` original code was originally converted from code by the following 
+individuals for use with Scilab:
     
 - Copyright (C) 2012 - 2013 - Michael Baudin
 - Copyright (C) 2012 - Maria Christopoulou
@@ -58,14 +58,11 @@ Scilab:
 
 - Website: forge.scilab.org/index.php/p/scidoe/sourcetree/master/macros
 
-Much thanks goes to these individuals.
+`pyDOE` was converted to Python by the following individual:
 
-And thanks goes out to the following for finding and offering solutions for
-bugs:
+- Copyright (c) 2014, Abraham D. Lee
 
-- Ashmeet Singh
-
-And thanks to the following individuals for forking and working with `pyDOE2`:
+The following individuals forked and works `pyDOE2`:
 
 - Copyright (C) 2018 - Rickard Sjögren and Daniel Svensson
 
