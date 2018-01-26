@@ -6,9 +6,9 @@ def read(fname):
 
 setup(
     name='pyDOE2',
-    version="0.3.8",
-    author='Abraham Lee',
-    author_email='tisimst@gmail.com',
+    version="1.0.2",
+    author='Rickard Sjögren',
+    author_email='r.sjogren89@gmail.com',
     description='Design of experiments for Python',
     url='https://github.com/clicumu/pyDOE2',
     license='BSD License (3-Clause)',
@@ -46,3 +46,4 @@ setup(
         'Topic :: Utilities'
         ]
     )
+
