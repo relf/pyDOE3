@@ -1,12 +1,13 @@
 import os
 from setuptools import setup
 
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+def read(fname, encoding='utf-8'):
+    with open(fname, encoding=encoding) as f:
+        return f.read()
 
 setup(
     name='pyDOE2',
-    version="1.0.2",
+    version="1.1",
     author='Rickard Sjögren',
     author_email='r.sjogren89@gmail.com',
     description='Design of experiments for Python',
