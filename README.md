@@ -19,14 +19,47 @@ number of factors:
     - 2-level Full-Factorial (``ff2n``)
     - 2-level Fractional Factorial (``fracfact``)
     - Plackett-Burman (``pbdesign``)
+    - Generalized Subset Designs (``gsd``)
 - Response-Surface Designs 
     - Box-Behnken (``bbdesign``)
     - Central-Composite (``ccdesign``)
 - Randomized Designs
     - Latin-Hypercube (``lhs``)
   
-See the original [package homepage](http://pythonhosted.org/pyDOE) for details 
+See the original [pyDOE homepage](http://pythonhosted.org/pyDOE) for details
 on usage and other notes.
+
+What's new?
+----------
+
+### Generalized Subset Designs
+
+In pyDOE2 version 1.1 the [Generalized Subset Design (GSD)](https://doi.org/10.1021/acs.analchem.7b00506)
+is introduced. GSD is a generalization of traditional fractional factorial
+designs to problems where factors can have more than two levels.
+
+In many application problems factors can have categorical or quantitative
+factors on more than two levels. Previous reduced designs have not been
+able to deal with such types of problems. Full multi-level factorial
+designs can handle such problems but are however not economical regarding
+the number of experiments.
+
+The GSD provide balanced designs in multi-level experiments with the number
+of experiments reduced by a user-specified reduction factor. Complementary
+reduced designs are also provided analogous to fold-over in traditional
+fractional factorial designs.
+
+GSD is available in pyDOE2 as:
+
+```
+import pyDOE2
+
+levels = [2, 3, 4]  # Three factors with 2, 3 or 4 levels respectively.
+reduction = 3       # Reduce the number of experiment to approximately a third.
+
+pyDOE2.gsd(levels, reduction)
+```
+
 
 Requirements
 ------------
@@ -62,7 +95,7 @@ individuals for use with Scilab:
 
 - Copyright (c) 2014, Abraham D. Lee
 
-The following individuals forked and works `pyDOE2`:
+The following individuals forked and works on `pyDOE2`:
 
 - Copyright (C) 2018 - Rickard Sjögren and Daniel Svensson
 
@@ -83,3 +116,7 @@ References
 - [Box-Behnken designs](http://en.wikipedia.org/wiki/Box-Behnken_design)
 - [Central composite designs](http://en.wikipedia.org/wiki/Central_composite_design)
 - [Latin-Hypercube designs](http://en.wikipedia.org/wiki/Latin_hypercube_sampling)
+- Surowiec, Izabella, Ludvig Vikström, Gustaf Hector, Erik Johansson,
+Conny Vikström, and Johan Trygg. “Generalized Subset Designs in Analytical
+Chemistry.” Analytical Chemistry 89, no. 12 (June 20, 2017): 6491–97.
+https://doi.org/10.1021/acs.analchem.7b00506.
