@@ -1,5 +1,5 @@
 """
-Copyright (C) 2018 - Rickard Sjögren
+Copyright (C) 2018 - Rickard Sjoegren
 """
 import itertools
 
@@ -103,12 +103,12 @@ def gsd(levels, reduction, n=1):
 
     References
     ----------
-    .. [1] Surowiec, Izabella, Ludvig Vikström, Gustaf Hector, Erik Johansson,
-       Conny Vikström, and Johan Trygg. "Generalized Subset Designs in
+    .. [1] Surowiec, Izabella, Ludvig Vikstrom, Gustaf Hector, Erik Johansson,
+       Conny Vikstrom, and Johan Trygg. "Generalized Subset Designs in
        Analytical Chemistry." Analytical Chemistry 89, no. 12 (June 20, 2017):
        6491-97. https://doi.org/10.1021/acs.analchem.7b00506.
 
-    .. [2] Vikström, Ludvig, Conny Vikström, Erik Johansson, and Gustaf Hector.
+    .. [2] Vikstrom, Ludvig, Conny Vikstrom, Erik Johansson, and Gustaf Hector.
        Computer-implemented systems and methods for generating
        generalized fractional designs. US9746850 B2, filed May 9,
        2014, and issued August 29, 2017. http://www.google.se/patents/US9746850.

@@ -16,7 +16,7 @@ pyDOE was converted to Python by the following individual:
 
 The following individuals forked and works on `pyDOE2`:
 
-- Copyright (C) 2018 - Rickard Sjögren and Daniel Svensson
+- Copyright (C) 2018 - Rickard Sjoegren and Daniel Svensson
 """
 
 from pyDOE2.doe_box_behnken import *
