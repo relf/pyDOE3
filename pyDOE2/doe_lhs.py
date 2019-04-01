@@ -201,7 +201,7 @@ def _lhscorrelate(n, samples, iterations, randomstate):
     for i in range(iterations):
         # Generate a random LHS
         Hcandidate = _lhsclassic(n, samples, randomstate)
-        R = np.corrcoef(Hcandidate)
+        R = np.corrcoef(Hcandidate.T)
         if np.max(np.abs(R[R!=1]))<mincorr:
             mincorr = np.max(np.abs(R-np.eye(R.shape[0])))
             H = Hcandidate.copy()
