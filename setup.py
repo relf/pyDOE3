@@ -14,6 +14,7 @@ setup(
     url='https://github.com/clicumu/pyDOE2',
     license='BSD License (3-Clause)',
     long_description=read('README.md'),
+    long_description_content_type='text/markdown',
     packages=['pyDOE2'],
     install_requires=['numpy', 'scipy'],
     keywords=[
