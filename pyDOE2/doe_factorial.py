@@ -13,7 +13,6 @@ Much thanks goes to these individuals. It has been converted to Python by
 Abraham Lee.
 """
 
-import imp
 import itertools
 import math
 import re
