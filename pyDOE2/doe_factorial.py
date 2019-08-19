@@ -17,7 +17,6 @@ import itertools
 import math
 import re
 import string
-from itertools import dropwhile, combinations, islice
 
 import numpy as np
 from scipy.special import binom
@@ -307,7 +306,7 @@ def fracfact_by_res(n, res):
         ValueError: design not possible
     """
     # Determine minimum required number of base-factors.
-    min_fac = next(dropwhile(lambda n_: _n_fac_at_res(n_, res) < n,
+    min_fac = next(itertools.dropwhile(lambda n_: _n_fac_at_res(n_, res) < n,
                              range(res - 1, n)), None)
 
     if min_fac is None:
@@ -324,8 +323,8 @@ def fracfact_by_res(n, res):
 
     # Fill out with factor combinations until `n` factors.
     factor_combs = (''.join(c) for r in range(res - 1, len(factors))
-                    for c in combinations(factors, r))
-    extra_factors = list(islice(factor_combs, n - len(factors)))
+                    for c in itertools.combinations(factors, r))
+    extra_factors = list(itertools.islice(factor_combs, n - len(factors)))
 
     # Concatenate `gen` string for `fracfact`.
     gen = ' '.join(factors + extra_factors)
