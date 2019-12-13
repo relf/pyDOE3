@@ -15,8 +15,11 @@ Abraham Lee.
 
 import numpy as np
 from scipy import spatial
+from scipy import stats
+from scipy import linalg
+from numpy import ma
 
-__all__ = ['lhs']
+__all__ = ['lhs','lhsmu']
 
 
 def lhs(n, samples=None, criterion=None, iterations=None, random_state=None):
@@ -132,6 +135,62 @@ def lhs(n, samples=None, criterion=None, iterations=None, random_state=None):
 
     return H
 
+def lhsmu(N, samples=None, M = 5, corr=None, random_state=None):
+
+    if random_state is None:
+        random_state = np.random.RandomState()
+    elif not isinstance(random_state, np.random.RandomState):
+        random_state = np.random.RandomState(random_state)
+
+    if samples is None:
+        samples = N
+
+    I = M*samples
+
+    rdpoints = random_state.uniform(size = (I, N))
+
+    dist = spatial.distance.cdist(rdpoints,rdpoints,metric='euclidean')
+    D_ij = ma.masked_array(dist, mask = np.identity(I))
+
+    index_rm = np.zeros(I-samples, dtype = int)
+    i = 0
+    while i < I-samples:
+        order = ma.sort(D_ij, axis = 1)
+
+        avg_dist = ma.mean(order[:,0:2], axis = 1)
+        min_l = ma.argmin(avg_dist)
+
+        D_ij[min_l,:] = ma.masked
+        D_ij[:,min_l] = ma.masked
+        
+        index_rm[i] = min_l
+        i+=1 
+
+    rdpoints = np.delete(rdpoints, index_rm, axis = 0)
+        
+    if(corr is not None):
+        assert type(corr) == np.ndarray
+        assert corr.ndim ==  2
+        assert corr.shape[0] == corr.shape[1]
+        assert corr.shape[0] == N
+        norm_u = stats.norm().ppf(rdpoints)
+        L = linalg.cholesky(corr, lower=True)
+
+        norm_u = np.matmul(norm_u,L)
+        
+        H = stats.norm().cdf(norm_u)
+    else:
+        H = np.zeros_like(rdpoints,dtype=float)
+        rank = np.argsort(rdpoints, axis = 0)
+
+        for l in range(samples):
+            low = float(l)/samples
+            high = float(l+1)/samples
+
+            l_pos = rank == l
+            H[l_pos] = random_state.uniform(low,high,size=N)
+    return H
+
 ################################################################################
 
 def _lhsclassic(n, samples, randomstate):
@@ -207,3 +266,4 @@ def _lhscorrelate(n, samples, iterations, randomstate):
             H = Hcandidate.copy()
     
     return H
+ 
