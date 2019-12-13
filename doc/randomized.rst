@@ -44,7 +44,7 @@ where
     intervals
   - "correlation" or "corr": minimize the maximum correlation coefficient
   - "lhsmu" : Latin hypercube with multifimensional Uniformity. Correlation between
-     variable can be enforced by setting a valid covariance matrix. Description of the
+     variable can be enforced by setting a valid correlation matrix. Description of the
      algorithm can be found in `Deutsch and Deutsch`_.
   
 The output design scales all the variable ranges from zero to one which

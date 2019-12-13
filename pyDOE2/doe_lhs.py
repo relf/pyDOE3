@@ -22,7 +22,7 @@ from numpy import ma
 __all__ = ['lhs']
 
 
-def lhs(n, samples=None, criterion=None, iterations=None, random_state=None, covariance_matrix = None):
+def lhs(n, samples=None, criterion=None, iterations=None, random_state=None, correlation_matrix = None):
     """
     Generate a latin-hypercube design
 
@@ -136,7 +136,7 @@ def lhs(n, samples=None, criterion=None, iterations=None, random_state=None, cov
             H = _lhscorrelate(n, samples, iterations, random_state)
         elif criterion.lower() in ('lhsmu'):
             # as specified by the paper. M is set to 5
-            H = _lhsmu(n, samples, covariance_matrix, random_state, M=5)
+            H = _lhsmu(n, samples, correlation_matrix, random_state, M=5)
 
     return H
 
@@ -257,10 +257,6 @@ def _lhsmu(N, samples=None, corr=None, random_state=None, M=5):
         assert corr.ndim == 2
         assert corr.shape[0] == corr.shape[1]
         assert corr.shape[0] == N
-
-        #check if covariance matrix is semi positive definite
-        assert np.all(corr > 0)
-        assert np.all(linalg.eigvals(corr) > 0)
 
         norm_u = stats.norm().ppf(rdpoints)
         L = linalg.cholesky(corr, lower=True)
