@@ -19,10 +19,10 @@ from scipy import stats
 from scipy import linalg
 from numpy import ma
 
-__all__ = ['lhs','lhsmu']
+__all__ = ['lhs']
 
 
-def lhs(n, samples=None, criterion=None, iterations=None, random_state=None):
+def lhs(n, samples=None, criterion=None, iterations=None, random_state=None, covariance_matrix = None):
     """
     Generate a latin-hypercube design
 
@@ -44,6 +44,8 @@ def lhs(n, samples=None, criterion=None, iterations=None, random_state=None):
         (Default: 5).
     randomstate : np.random.RandomState, int
          Random state (or seed-number) which controls the seed and random draws
+    correlation_matrix : ndarray
+         Enforce correlation between factors (only used in lhsmu)
 
     Returns
     -------
@@ -112,7 +114,7 @@ def lhs(n, samples=None, criterion=None, iterations=None, random_state=None):
     if criterion is not None:
         if not criterion.lower() in ('center', 'c', 'maximin', 'm',
                                      'centermaximin', 'cm', 'correlation',
-                                     'corr'):
+                                     'corr','lhsmu'):
             raise ValueError('Invalid value for "criterion": {}'.format(criterion))
 
     else:
@@ -132,63 +134,10 @@ def lhs(n, samples=None, criterion=None, iterations=None, random_state=None):
             H = _lhsmaximin(n, samples, iterations, 'centermaximin', random_state)
         elif criterion.lower() in ('correlation', 'corr'):
             H = _lhscorrelate(n, samples, iterations, random_state)
+        elif criterion.lower() in ('lhsmu'):
+            # as specified by the paper. M is set to 5
+            H = _lhsmu(n, samples, covariance_matrix, random_state, M=5)
 
-    return H
-
-def lhsmu(N, samples=None, M = 5, corr=None, random_state=None):
-
-    if random_state is None:
-        random_state = np.random.RandomState()
-    elif not isinstance(random_state, np.random.RandomState):
-        random_state = np.random.RandomState(random_state)
-
-    if samples is None:
-        samples = N
-
-    I = M*samples
-
-    rdpoints = random_state.uniform(size = (I, N))
-
-    dist = spatial.distance.cdist(rdpoints,rdpoints,metric='euclidean')
-    D_ij = ma.masked_array(dist, mask = np.identity(I))
-
-    index_rm = np.zeros(I-samples, dtype = int)
-    i = 0
-    while i < I-samples:
-        order = ma.sort(D_ij, axis = 1)
-
-        avg_dist = ma.mean(order[:,0:2], axis = 1)
-        min_l = ma.argmin(avg_dist)
-
-        D_ij[min_l,:] = ma.masked
-        D_ij[:,min_l] = ma.masked
-        
-        index_rm[i] = min_l
-        i+=1 
-
-    rdpoints = np.delete(rdpoints, index_rm, axis = 0)
-        
-    if(corr is not None):
-        assert type(corr) == np.ndarray
-        assert corr.ndim ==  2
-        assert corr.shape[0] == corr.shape[1]
-        assert corr.shape[0] == N
-        norm_u = stats.norm().ppf(rdpoints)
-        L = linalg.cholesky(corr, lower=True)
-
-        norm_u = np.matmul(norm_u,L)
-        
-        H = stats.norm().cdf(norm_u)
-    else:
-        H = np.zeros_like(rdpoints,dtype=float)
-        rank = np.argsort(rdpoints, axis = 0)
-
-        for l in range(samples):
-            low = float(l)/samples
-            high = float(l+1)/samples
-
-            l_pos = rank == l
-            H[l_pos] = random_state.uniform(low,high,size=N)
     return H
 
 ################################################################################
@@ -267,3 +216,66 @@ def _lhscorrelate(n, samples, iterations, randomstate):
     
     return H
  
+ ################################################################################
+
+def _lhsmu(N, samples=None, corr=None, random_state=None, M=5):
+
+    if random_state is None:
+        random_state = np.random.RandomState()
+    elif not isinstance(random_state, np.random.RandomState):
+        random_state = np.random.RandomState(random_state)
+
+    if samples is None:
+        samples = N
+
+    I = M*samples
+
+    rdpoints = random_state.uniform(size=(I, N))
+
+    dist = spatial.distance.cdist(rdpoints, rdpoints, metric='euclidean')
+    D_ij = ma.masked_array(dist, mask=np.identity(I))
+
+    index_rm = np.zeros(I-samples, dtype=int)
+    i = 0
+    while i < I-samples:
+        order = ma.sort(D_ij, axis=1)
+
+        avg_dist = ma.mean(order[:, 0:2], axis=1)
+        min_l = ma.argmin(avg_dist)
+
+        D_ij[min_l, :] = ma.masked
+        D_ij[:, min_l] = ma.masked
+
+        index_rm[i] = min_l
+        i += 1
+
+    rdpoints = np.delete(rdpoints, index_rm, axis=0)
+
+    if(corr is not None):
+        #check if covariance matrix is valid
+        assert type(corr) == np.ndarray
+        assert corr.ndim == 2
+        assert corr.shape[0] == corr.shape[1]
+        assert corr.shape[0] == N
+
+        #check if covariance matrix is semi positive definite
+        assert np.all(corr > 0)
+        assert np.all(linalg.eigvals(corr) > 0)
+
+        norm_u = stats.norm().ppf(rdpoints)
+        L = linalg.cholesky(corr, lower=True)
+
+        norm_u = np.matmul(norm_u, L)
+
+        H = stats.norm().cdf(norm_u)
+    else:
+        H = np.zeros_like(rdpoints, dtype=float)
+        rank = np.argsort(rdpoints, axis=0)
+
+        for l in range(samples):
+            low = float(l)/samples
+            high = float(l+1)/samples
+
+            l_pos = rank == l
+            H[l_pos] = random_state.uniform(low, high, size=N)
+    return H
