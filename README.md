@@ -38,7 +38,7 @@ In pyDOE2 version 1.1 the [Generalized Subset Design (GSD)](https://doi.org/10.1
 is introduced. GSD is a generalization of traditional fractional factorial
 designs to problems where factors can have more than two levels.
 
-In many application problems factors can have categorical or quantitative
+In many application problems, factors can have categorical or quantitative
 factors on more than two levels. Previous reduced designs have not been
 able to deal with such types of problems. Full multi-level factorial
 designs can handle such problems but are however not economical regarding
@@ -55,7 +55,7 @@ GSD is available in pyDOE2 as:
 import pyDOE2
 
 levels = [2, 3, 4]  # Three factors with 2, 3 or 4 levels respectively.
-reduction = 3       # Reduce the number of experiment to approximately a third.
+reduction = 3       # Reduce the number of experiments to approximately a third.
 
 pyDOE2.gsd(levels, reduction)
 ```
@@ -95,7 +95,7 @@ individuals for use with Scilab:
 
 - Copyright (c) 2014, Abraham D. Lee
 
-The following individuals forked and works on `pyDOE2`:
+The following individuals forked and work on `pyDOE2`:
 
 - Copyright (C) 2018 - Rickard Sjögren and Daniel Svensson
 
