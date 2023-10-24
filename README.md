@@ -66,18 +66,12 @@ individuals for use with Scilab:
 The following individuals forked and work on `pyDOE2`:
 
 - Copyright (C) 2018 - Rickard Sjögren and Daniel Svensson
-- 
-The following individuals forked and work on `pyDOE3`:
 
-- Copyright (C) 2023 - Rémi Lafage
 
 License
 -------
 
-This package is provided under two licenses:
-
-1. The *BSD License* (3-clause)
-2. Any other that the author approves (just ask!)
+This package is provided under the *BSD License* (3-clause)
 
 References
 ----------
