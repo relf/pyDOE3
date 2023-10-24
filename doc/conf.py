@@ -17,7 +17,7 @@ import sys, os
 
 sys.path.insert(0, os.path.abspath('..'))
 
-import pyDOE2
+import pyDOE3
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -43,7 +43,7 @@ source_suffix = '.rst'
 master_doc = 'index_TOC'
 
 # General information about the project.
-project = u'pyDOE2'
+project = u'pyDOE3'
 if date.today().year!=2013:
     copyright = u'2013–%d, Abraham Lee' % date.today().year
 else:

@@ -3,7 +3,7 @@ requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pyDOE2"
+name = "pyDOE3"
 dynamic = ["version"]
 description = "Design of experiments for Python"
 readme = "README.md"
@@ -42,7 +42,7 @@ classifiers = [
 dependencies = ["numpy", "scipy"]
 
 [project.urls]
-source = "https://github.com/clicumu/pyDOE2"
+source = "https://github.com/relf/pyDOE3"
 
 [tool.hatch.version]
 source = "vcs"
