@@ -1,7 +1,7 @@
-pyDOE2: An experimental design package for python
+pyDOE3: An experimental design package for python
 =====================================================
 
-`pyDOE2` is a fork of the [`pyDOE`](https://github.com/tisimst/pyDOE) package 
+`pyDOE3` is a fork of the [`pyDOE2`](https://github.com/clicumu/pyDOE2) package 
 that is designed to help the scientist, engineer, statistician, etc., to 
 construct appropriate experimental designs.
 
@@ -29,38 +29,6 @@ number of factors:
 See the original [pyDOE homepage](http://pythonhosted.org/pyDOE) for details
 on usage and other notes.
 
-What's new?
-----------
-
-### Generalized Subset Designs
-
-In pyDOE2 version 1.1 the [Generalized Subset Design (GSD)](https://doi.org/10.1021/acs.analchem.7b00506)
-is introduced. GSD is a generalization of traditional fractional factorial
-designs to problems where factors can have more than two levels.
-
-In many application problems, factors can have categorical or quantitative
-factors on more than two levels. Previous reduced designs have not been
-able to deal with such types of problems. Full multi-level factorial
-designs can handle such problems but are however not economical regarding
-the number of experiments.
-
-The GSD provide balanced designs in multi-level experiments with the number
-of experiments reduced by a user-specified reduction factor. Complementary
-reduced designs are also provided analogous to fold-over in traditional
-fractional factorial designs.
-
-GSD is available in pyDOE2 as:
-
-```
-import pyDOE2
-
-levels = [2, 3, 4]  # Three factors with 2, 3 or 4 levels respectively.
-reduction = 3       # Reduce the number of experiments to approximately a third.
-
-pyDOE2.gsd(levels, reduction)
-```
-
-
 Requirements
 ------------
 
@@ -73,7 +41,7 @@ Installation and download
 Through pip:
 
 ```
-pip install pyDOE2
+pip install pyDOE3
 ```
 
 
@@ -98,7 +66,10 @@ individuals for use with Scilab:
 The following individuals forked and work on `pyDOE2`:
 
 - Copyright (C) 2018 - Rickard Sjögren and Daniel Svensson
+- 
+The following individuals forked and work on `pyDOE3`:
 
+- Copyright (C) 2023 - Rémi Lafage
 
 License
 -------
