@@ -7,7 +7,7 @@ name = "pyDOE3"
 dynamic = ["version"]
 description = "Design of experiments for Python"
 readme = "README.md"
-authors = [{ name = "Rickard Sjoegren", email = "r.sjogren89@gmail.com" }]
+authors = [{ name = "Rémi Lafage", email = "remi.lafage@onera.fr" }]
 license = "BSD-3-Clause"
 keywords = [
     "DOE",
