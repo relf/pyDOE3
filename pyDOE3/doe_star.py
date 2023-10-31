@@ -45,12 +45,12 @@ def star(n, alpha='faced', center=(1, 1)):
     ::
     
         >>> star(3)
-        array([[-1.,  0.,  0.],
+        (array([[-1.,  0.,  0.],
                [ 1.,  0.,  0.],
                [ 0., -1.,  0.],
                [ 0.,  1.,  0.],
                [ 0.,  0., -1.],
-               [ 0.,  0.,  1.]])
+               [ 0.,  0.,  1.]]), 1)
                
     """
     # Star points at the center of each face of the factorial

@@ -36,8 +36,8 @@ def repeat_center(n, repeat):
     ::
     
         >>> repeat_center(3, 2)
-        array([[ 0.,  0.,  0.],
-               [ 0.,  0.,  0.]])
+        array([[0., 0., 0.],
+               [0., 0., 0.]])
        
     """
     return np.zeros((repeat, n))
