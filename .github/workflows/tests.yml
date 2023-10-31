@@ -34,8 +34,8 @@ jobs:
     - name: Check format with black
       run: |
         black --version
-        black --diff smt
-        black --check smt
+        black --diff pyDOE3
+        black --check pyDOE3
 
     - name: Test with pytest
       run: pytest pyDOE3
