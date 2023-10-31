@@ -1,4 +1,4 @@
-name: Tests
+name: Linting
 
 on:
   push:
@@ -8,21 +8,14 @@ on:
 
 jobs:
   test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ["3.11"]
-        include:
-          - os: ubuntu-latest
-            python-version: "3.8"
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
     - name: Set up python
       uses: actions/setup-python@v4
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: 3.11
 
     - name: Install dependencies
       run: |
@@ -30,5 +23,8 @@ jobs:
         pip install -r requirements.txt
         pip install -e .
 
-    - name: Test with pytest
-      run: pytest pyDOE3
+    - name: Check format with black
+      run: |
+        black --version
+        black --diff pyDOE3
+        black --check pyDOE3
