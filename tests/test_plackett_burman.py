@@ -3,7 +3,7 @@ from pyDOE3.doe_plackett_burman import pbdesign
 import numpy as np
 
 
-class Test_plackett_burman(unittest.TestCase):
+class TestPlackettBurman(unittest.TestCase):
     def test_plackett_burman1(self):
         expected = [
             [-1.0, -1.0, 1.0],

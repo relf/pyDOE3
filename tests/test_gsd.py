@@ -3,7 +3,7 @@ from pyDOE3.doe_gsd import gsd
 import numpy as np
 
 
-class Test_gsd(unittest.TestCase):
+class TestGsd(unittest.TestCase):
     def test_gsd1(self):
         expected = [
             [0, 0, 0],

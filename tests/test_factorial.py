@@ -6,7 +6,7 @@ from pyDOE3.doe_factorial import fracfact_by_res
 import numpy as np
 
 
-class Test_factorial(unittest.TestCase):
+class TestFactorial(unittest.TestCase):
     def test_factorial1(self):
         expected = [
             [0.0, 0.0, 0.0],

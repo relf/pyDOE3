@@ -4,7 +4,7 @@ from pyDOE3.doe_star import star
 import numpy as np
 
 
-class Test_star(unittest.TestCase):
+class TestStar(unittest.TestCase):
     def test_star1(self):
         expected = (
             np.array(

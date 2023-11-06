@@ -6,7 +6,7 @@ from pyDOE3.doe_lhs import _lhsmaximin
 import numpy as np
 
 
-class Test_Lhs(unittest.TestCase):
+class TestLhs(unittest.TestCase):
     def test_lhs1(self):
         expected = [
             [0.12484671, 0.95539205, 0.24399798],
