@@ -20,6 +20,5 @@ class Test_star(unittest.TestCase):
             1,
         )
         actual = star(3)
-        print(actual)
         np.testing.assert_allclose(actual[0], expected[0])
         self.assertEqual(actual[1], expected[1])
