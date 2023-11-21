@@ -7,3 +7,4 @@ MANIFEST
 .idea
 
 .vscode/
+_version.py

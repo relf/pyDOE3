@@ -12,12 +12,15 @@ individuals for use with Scilab:
 
 pyDOE was converted to Python by the following individual:
 
-- Copyright (c) 2014, Abraham D. Lee
+- Copyright (C) 2014, Abraham D. Lee
 
-The following individuals forked and works on `pyDOE2`:
+The following individuals forked pyDOE and works on `pyDOE2`:
 
 - Copyright (C) 2018 - Rickard Sjoegren and Daniel Svensson
+
 """
+
+from ._version import __version__ 
 
 from pyDOE3.doe_box_behnken import *
 from pyDOE3.doe_composite import *
