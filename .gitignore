@@ -8,3 +8,6 @@ MANIFEST
 
 .vscode/
 _version.py
+doc
+tests
+doc/_build
