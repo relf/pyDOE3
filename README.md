@@ -1,3 +1,6 @@
+[![Tests](https://github.com/relf/pyDOE3/actions/workflows/tests.yml/badge.svg)](https://github.com/relf/pyDOE3/actions/workflows/tests.yml)
+
+
 pyDOE3: An experimental design package for python
 =====================================================
 
@@ -7,6 +10,7 @@ construct appropriate experimental designs.
 
 This fork came to life to solve bugs and issues that remained unsolved in the
 original package.
+
 
 Capabilities
 ------------
@@ -29,16 +33,16 @@ number of factors:
 See the original [pyDOE homepage](http://pythonhosted.org/pyDOE) for details
 on usage and other notes.
 
+
 Requirements
 ------------
 
 - NumPy
 - SciPy
 
-Installation and download
--------------------------
 
-Through pip:
+Installation
+------------
 
 ```
 pip install pyDOE3
@@ -61,7 +65,7 @@ individuals for use with Scilab:
 
 `pyDOE` was converted to Python by the following individual:
 
-- Copyright (c) 2014, Abraham D. Lee
+- Copyright (c) 2014, Abraham D. Lee & timsimst
 
 The following individuals forked and work on `pyDOE2`:
 
