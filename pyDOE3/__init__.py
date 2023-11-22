@@ -20,7 +20,7 @@ The following individuals forked pyDOE and works on `pyDOE2`:
 
 """
 
-from ._version import __version__ 
+from ._version import __version__
 
 from pyDOE3.doe_box_behnken import *
 from pyDOE3.doe_composite import *
