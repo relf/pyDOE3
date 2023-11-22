@@ -39,6 +39,8 @@ number of factors:
 
   #. :ref:`Plackett-Burman <plackett_burman>` (``pbdesign``)
 
+  #. :ref:`Generalized Subset Design <gsd>` (``gsd``)
+
 - :ref:`Response-Surface Designs <response_surface>`
 
   #. :ref:`Box-Behnken <box_behnken>` (``bbdesign``)

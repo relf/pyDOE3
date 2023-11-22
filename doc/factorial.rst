@@ -10,6 +10,7 @@ In this section, the following kinds of *factorial designs* will be described:
 - :ref:`2-Level Full-Factorial <2_level_full_factorial>`
 - :ref:`2-Level Fractional-Factorial <fractional_factorial>`
 - :ref:`Plackett-Burman <plackett_burman>`
+- :ref:`Generalized Subset Design <gsd>`
 
 .. hint::
    All available designs can be accessed after a simple import statement::
@@ -275,6 +276,47 @@ fractional factorial design are identical::
     >>> np.all(pbdesign(7)==fracfact('a b ab c ac bc abc'))
     True
 
+.. index:: Plackett-Burman
+
+.. _gsd:
+
+Generalized Subset Design (``gsd``)
+===================================
+
+GSD is a generalization of traditional fractional factorial designs to problems where factors 
+can have more than two levels.
+
+In many application problems, factors can have categorical or quantitative factors on more than two levels. 
+Previous reduced designs have not been able to deal with such types of problems. 
+Full multi-level factorial designs can handle such problems but are however not economical 
+regarding the number of experiments.
+
+The GSD provide balanced designs in multi-level experiments with the number of experiments 
+reduced by a user-specified reduction factor. Complementary reduced designs are also provided 
+analogous to fold-over in traditional fractional factorial designs.
+
+An example with three factors using three, four and six levels respectively reduced with a factor 4:
+
+    >>> gsd([3, 4, 6], 4)
+    array([[0, 0, 0],
+            [0, 0, 4],
+            [0, 1, 1],
+            [0, 1, 5],
+            [0, 2, 2],
+            [0, 3, 3],
+            [1, 0, 1],
+            [1, 0, 5],
+            [1, 1, 2],
+            [1, 2, 3],
+            [1, 3, 0],
+            [1, 3, 4],
+            [2, 0, 2],
+            [2, 1, 3],
+            [2, 2, 0],
+            [2, 2, 4],
+            [2, 3, 1],
+            [2, 3, 5]])
+
 .. index:: Factorial Designs Support
 
 More Information
@@ -289,8 +331,6 @@ consult the following articles on Wikipedia:
 There is also a wealth of information on the `NIST`_ website about the
 various design matrices that can be created as well as detailed information
 about designing/setting-up/running experiments in general.
-
-Any questions, comments, bug-fixes, etc. can be forwarded to the `author`_.
 
 .. _author: mailto:tisimst@gmail.com
 .. _Factorial designs: http://en.wikipedia.org/wiki/Factorial_experiment
