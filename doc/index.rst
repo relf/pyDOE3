@@ -5,10 +5,11 @@
 
 
 =====================================================
-``pyDOE``: The experimental design package for python
+``pyDOE3``: An experimental design package for python
 =====================================================
 
-**``pyDOE3`` is fork of ``pyDOE2`` which was a fork of ``pyDOE``**
+**pyDOE3 is fork of pyDOE2 which is a fork of pyDOE.**
+
 As for ``pyDOE2`` wrt to ``pyDOE``, ``pyDOE3`` came to life to solve 
 bugs and issues that remained unsolved in ``pyDOE2``.
 
@@ -19,7 +20,8 @@ The ``pyDOE3`` package is designed to help the
 .. hint::
    All available designs can be accessed after a simple import statement::
 
-    >>> from pyDOE3 import *
+   >>> from pyDOE3 import *
+
     
 Capabilities
 ============
@@ -57,11 +59,8 @@ Requirements
 
 .. _installing this package:
 
-Installation and download
-=========================
-
-Automatic install or upgrade
-----------------------------
+Installation
+============
 
 .. code-block:: sh
 
