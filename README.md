@@ -31,9 +31,7 @@ number of factors:
 - Randomized Designs
     - Latin-Hypercube (``lhs``)
   
-See the original [pyDOE homepage](http://pythonhosted.org/pyDOE) for details
-on usage and other notes.
-
+See [Documentation](https://pydoe3.readthedocs.io).
 
 Requirements
 ------------

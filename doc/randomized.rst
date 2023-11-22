@@ -14,7 +14,7 @@ be described:
 .. hint::
    All available designs can be accessed after a simple import statement::
 
-    >>> from pyDOE import *
+    >>> from pyDOE3 import *
     
 .. index:: Latin-Hypercube
 

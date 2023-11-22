@@ -15,7 +15,7 @@ In this section, the following kinds of *factorial designs* will be described:
 .. hint::
    All available designs can be accessed after a simple import statement::
 
-    >>> from pyDOE import *
+    >>> from pyDOE3 import *
 
 
 .. index:: General Full-Factorial
