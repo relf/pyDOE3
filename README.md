@@ -3,6 +3,7 @@ pyDOE3: An experimental design package for python
 
 [![Tests](https://github.com/relf/pyDOE3/actions/workflows/tests.yml/badge.svg)](https://github.com/relf/pyDOE3/actions/workflows/tests.yml)
 [![Documentation](https://readthedocs.org/projects/pydoe3/badge/?version=latest)](https://pydoe3.readthedocs.io/en/latest/?badge=latest)
+[![DOI](https://zenodo.org/badge/709347557.svg)](https://zenodo.org/doi/10.5281/zenodo.10958492)
 
 `pyDOE3` is a fork of the [`pyDOE2`](https://github.com/clicumu/pyDOE2) package
 that is designed to help the scientist, engineer, statistician, etc., to
