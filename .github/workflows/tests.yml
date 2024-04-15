@@ -33,6 +33,6 @@ jobs:
     - name: Test with pytest
       run: |
         pytest --doctest-modules pyDOE3
-        pytest pyDOE3
+        pytest tests
 
 
