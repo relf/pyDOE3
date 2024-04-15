@@ -6,10 +6,10 @@ Scilab:
     Copyright (C) 2010 - 2011 - INRIA - Michael Baudin
     Copyright (C) 2009 - Yann Collette
     Copyright (C) 2009 - CEA - Jean-Marc Martinez
-    
+
     website: forge.scilab.org/index.php/p/scidoe/sourcetree/master/macros
 
-Much thanks goes to these individuals. It has been converted to Python by 
+Much thanks goes to these individuals. It has been converted to Python by
 Abraham Lee.
 """
 
@@ -23,7 +23,6 @@ from scipy.special import binom
 
 
 __all__ = [
-    "np",
     "fullfact",
     "ff2n",
     "fracfact",
@@ -213,7 +212,7 @@ def fracfact(gen):
     C = [len(item) for item in A]
 
     # Indices of single letters (main factors)
-    I = [i for i, item in enumerate(C) if item == 1]
+    I = [i for i, item in enumerate(C) if item == 1]  # noqa
 
     # Indices of letter combinations (we need them to fill out H2 properly).
     J = [i for i, item in enumerate(C) if item != 1]
@@ -223,7 +222,7 @@ def fracfact(gen):
 
     # If R1 is either None or not, the result is not changed, since it is a
     # multiplication of 1.
-    R1 = _grep(U, "+")
+    # R1 = _grep(U, "+")
     R2 = _grep(U, "-")
 
     # Fill in design with two level factorial design
@@ -425,7 +424,7 @@ def fracfact_opt(n_factors, n_erased, max_attempts=0):
         raise ValueError("Too many erased factors to create aliasing")
 
     all_names = string.ascii_lowercase
-    factors = range(n_factors)
+    # factors = range(n_factors)
     main_factors = range(n_main_factors)
     main_design = " ".join([all_names[f] for f in main_factors])
     aliases = itertools.chain.from_iterable(
