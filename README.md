@@ -61,7 +61,7 @@ individuals for use with Scilab:
 
 `pyDOE` was converted to Python by the following individual:
 
-- Copyright (c) 2014, Abraham D. Lee & timsimst
+- Copyright (c) 2014, Abraham D. Lee
 
 The following individuals forked and worked on `pyDOE2`:
 
