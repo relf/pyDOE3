@@ -6,14 +6,13 @@ Scilab:
     Copyright (C) 2010 - 2011 - INRIA - Michael Baudin
     Copyright (C) 2009 - Yann Collette
     Copyright (C) 2009 - CEA - Jean-Marc Martinez
-    
+
     website: forge.scilab.org/index.php/p/scidoe/sourcetree/master/macros
 
-Much thanks goes to these individuals. It has been converted to Python by 
+Much thanks goes to these individuals. It has been converted to Python by
 Abraham Lee.
 """
 
-import numpy as np
 from pyDOE3.doe_factorial import ff2n
 from pyDOE3.doe_star import star
 from pyDOE3.doe_union import union
@@ -130,19 +129,11 @@ def ccdesign(n, center=(4, 4), alpha="orthogonal", face="circumscribed"):
         "ccf",
     ), 'Invalid value for "face": {:}'.format(face)
 
-    try:
-        nc = len(center)
-    except:
-        raise TypeError(
-            'Invalid value for "center": {:}. Expected a 1-by-2 array.'.format(center)
+    nc = len(center)
+    if nc != 2:
+        raise ValueError(
+            'Invalid number of values for "center" (expected 2, but got {:})'.format(nc)
         )
-    else:
-        if nc != 2:
-            raise ValueError(
-                'Invalid number of values for "center" (expected 2, but got {:})'.format(
-                    nc
-                )
-            )
 
     # Orthogonal Design
     if alpha.lower() in ("orthogonal", "o"):
