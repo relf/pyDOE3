@@ -6,14 +6,15 @@ Scilab:
     Copyright (C) 2010 - 2011 - INRIA - Michael Baudin
     Copyright (C) 2009 - Yann Collette
     Copyright (C) 2009 - CEA - Jean-Marc Martinez
-    
+
     website: forge.scilab.org/index.php/p/scidoe/sourcetree/master/macros
 
-Much thanks goes to these individuals. It has been converted to Python by 
+Much thanks goes to these individuals. It has been converted to Python by
 Abraham Lee.
 """
 
 import numpy as np
+from .build_regression_matrix import build_regression_matrix
 
 
 def var_regression_matrix(H, x, model, sigma=1):

@@ -1,8 +1,5 @@
 import unittest
 from pyDOE3.doe_lhs import lhs
-from pyDOE3.doe_lhs import _lhsclassic
-from pyDOE3.doe_lhs import _lhscentered
-from pyDOE3.doe_lhs import _lhsmaximin
 import numpy as np
 
 

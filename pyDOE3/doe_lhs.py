@@ -6,10 +6,10 @@ Scilab:
     Copyright (C) 2010 - 2011 - INRIA - Michael Baudin
     Copyright (C) 2009 - Yann Collette
     Copyright (C) 2009 - CEA - Jean-Marc Martinez
-    
+
     website: forge.scilab.org/index.php/p/scidoe/sourcetree/master/macros
 
-Much thanks goes to these individuals. It has been converted to Python by 
+Much thanks goes to these individuals. It has been converted to Python by
 Abraham Lee.
 """
 
@@ -119,7 +119,7 @@ def lhs(
         samples = n
 
     if criterion is not None:
-        if not criterion.lower() in (
+        if criterion.lower() not in (
             "center",
             "c",
             "maximin",
@@ -252,7 +252,7 @@ def _lhsmu(N, samples=None, corr=None, random_state=None, M=5):
     if samples is None:
         samples = N
 
-    I = M * samples
+    I = M * samples  # noqa
 
     rdpoints = random_state.uniform(size=(I, N))
 
@@ -292,7 +292,7 @@ def _lhsmu(N, samples=None, corr=None, random_state=None, M=5):
         H = np.zeros_like(rdpoints, dtype=float)
         rank = np.argsort(rdpoints, axis=0)
 
-        for l in range(samples):
+        for l in range(samples):  # noqa
             low = float(l) / samples
             high = float(l + 1) / samples
 

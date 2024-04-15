@@ -17,16 +17,38 @@ pyDOE was converted to Python by the following individual:
 The following individuals forked pyDOE and works on `pyDOE2`:
 
 - Copyright (C) 2018 - Rickard Sjoegren and Daniel Svensson
-
 """
 
-from ._version import __version__
-
-from pyDOE3.doe_box_behnken import *
-from pyDOE3.doe_composite import *
-from pyDOE3.doe_factorial import *
-from pyDOE3.doe_lhs import *
-from pyDOE3.doe_fold import *
-from pyDOE3.doe_plackett_burman import *
-from pyDOE3.var_regression_matrix import *
+from pyDOE3.doe_box_behnken import bbdesign
+from pyDOE3.doe_composite import ccdesign
+from pyDOE3.doe_factorial import (
+    fullfact,
+    ff2n,
+    fracfact,
+    fracfact_by_res,
+    fracfact_opt,
+    fracfact_aliasing,
+    alias_vector_indices,
+)
+from pyDOE3.doe_lhs import lhs
+from pyDOE3.doe_fold import fold
+from pyDOE3.doe_plackett_burman import pbdesign
+from pyDOE3.var_regression_matrix import var_regression_matrix
 from pyDOE3.doe_gsd import gsd
+
+__all__ = [
+    "bbdesign",
+    "ccdesign",
+    "fullfact",
+    "ff2n",
+    "fracfact",
+    "fracfact_by_res",
+    "fracfact_opt",
+    "fracfact_aliasing",
+    "alias_vector_indices",
+    "lhs",
+    "fold",
+    "pbdesign",
+    "var_regression_matrix",
+    "gsd",
+]
