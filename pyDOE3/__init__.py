@@ -52,3 +52,5 @@ __all__ = [
     "var_regression_matrix",
     "gsd",
 ]
+
+from ._version import __version__  # noqa
