@@ -503,8 +503,8 @@ def fracfact_aliasing(design):
     for combination in all_combinations:
         contrast = np.prod(design[:, combination], axis=1)
         contrast.flags.writeable = False
-        aliases[contrast.data] = aliases.get(contrast.data, [])
-        aliases[contrast.data].append(combination)
+        aliases[contrast.data.tobytes()] = aliases.get(contrast.data.tobytes(), [])
+        aliases[contrast.data.tobytes()].append(combination)
 
     aliases_list = []
     for alias in aliases.values():
