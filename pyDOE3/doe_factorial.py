@@ -406,7 +406,7 @@ def fracfact_opt(n_factors, n_erased, max_attempts=0):
     def n_comb(n, k):
         if k <= 0 or n <= 0 or k > n:
             return 0
-        return math.factorial(n) / (math.factorial(k) * math.factorial(n - k))
+        return math.factorial(n) // (math.factorial(k) * math.factorial(n - k))
 
     if n_factors > 20:
         raise ValueError("Design too big, use 20 factors or less")
@@ -503,8 +503,8 @@ def fracfact_aliasing(design):
     for combination in all_combinations:
         contrast = np.prod(design[:, combination], axis=1)
         contrast.flags.writeable = False
-        aliases[contrast.data] = aliases.get(contrast.data, [])
-        aliases[contrast.data].append(combination)
+        aliases[contrast.data.tobytes()] = aliases.get(contrast.data.tobytes(), [])
+        aliases[contrast.data.tobytes()].append(combination)
 
     aliases_list = []
     for alias in aliases.values():
