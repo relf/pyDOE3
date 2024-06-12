@@ -100,4 +100,21 @@ class TestFactorial(unittest.TestCase):
         np.testing.assert_allclose(actual, expected)
 
     def test_issue_9(self):
-        fracfact_opt(4, 1)
+        ffo_doe = fracfact_opt(4, 1)
+        self.assertEqual(ffo_doe[0], "a b c abc")
+        self.assertEqual(
+            ffo_doe[1],
+            [
+                "a = bcd",
+                "b = acd",
+                "c = abd",
+                "d = abc",
+                "ab = cd",
+                "ac = bd",
+                "ad = bc",
+                "abcd",
+            ],
+        )
+        np.testing.assert_array_equal(
+            ffo_doe[2], np.array([0.0, 0.0, 3.0, 4.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+        )
