@@ -1,5 +1,5 @@
 import unittest
-from pyDOE3.doe_factorial import fullfact
+from pyDOE3.doe_factorial import fracfact_opt, fullfact
 from pyDOE3.doe_factorial import ff2n
 from pyDOE3.doe_factorial import fracfact
 from pyDOE3.doe_factorial import fracfact_by_res
@@ -98,3 +98,6 @@ class TestFactorial(unittest.TestCase):
         ]
         actual = fracfact_by_res(6, 3)
         np.testing.assert_allclose(actual, expected)
+
+    def test_issue_9(self):
+        fracfact_opt(4, 1)
