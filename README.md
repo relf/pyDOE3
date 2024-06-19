@@ -33,12 +33,6 @@ number of factors:
   
 See [Documentation](https://pydoe3.readthedocs.io).
 
-Requirements
-------------
-
-- NumPy
-- SciPy
-
 Installation
 ------------
 
@@ -52,21 +46,19 @@ Credits
 `pyDOE` original code was originally converted from code by the following
 individuals for use with Scilab:
 
-- Copyright (C) 2012 - 2013 - Michael Baudin
-- Copyright (C) 2012 - Maria Christopoulou
-- Copyright (C) 2010 - 2011 - INRIA - Michael Baudin
-- Copyright (C) 2009 - Yann Collette
-- Copyright (C) 2009 - CEA - Jean-Marc Martinez
-
-- Website: forge.scilab.org/index.php/p/scidoe/sourcetree/master/macros
+- Copyright (C) 2012-2013, Michael Baudin
+- Copyright (C) 2012, Maria Christopoulou
+- Copyright (C) 2010-2011, INRIA, Michael Baudin
+- Copyright (C) 2009, Yann Collette
+- Copyright (C) 2009, CEA, Jean-Marc Martinez
 
 `pyDOE` was converted to Python by the following individual:
 
 - Copyright (c) 2014, Abraham D. Lee
 
-The following individuals forked and worked on `pyDOE2`:
+The following individuals forked `pyDOE` and worked on `pyDOE2`:
 
-- Copyright (C) 2018 - Rickard Sjögren and Daniel Svensson
+- Copyright (C) 2018, Rickard Sjögren and Daniel Svensson
 
 License
 -------
