@@ -128,11 +128,11 @@ def gsd(levels, reduction, n=1):
 
     partitions = _make_partitions(levels, reduction)
     latin_square = _make_latin_square(reduction)
-    ortogonal_arrays = _make_orthogonal_arrays(latin_square, len(levels))
+    orthogonal_arrays = _make_orthogonal_arrays(latin_square, len(levels))
 
     try:
         designs = [
-            _map_partitions_to_design(partitions, oa) - 1 for oa in ortogonal_arrays
+            _map_partitions_to_design(partitions, oa) - 1 for oa in orthogonal_arrays
         ]
     except ValueError:
         raise ValueError("reduction too large compared to factor levels")
@@ -174,17 +174,17 @@ def _make_orthogonal_arrays(latin_square, n_cols):
     return A_matrices
 
 
-def _map_partitions_to_design(partitions, ortogonal_array):
+def _map_partitions_to_design(partitions, orthogonal_array):
     """
     Map partitioned factor to final design using orthogonal-array produced
     by augmenting latin square.
     """
     assert (
-        len(partitions) == ortogonal_array.max() + 1 and ortogonal_array.min() == 0
+        len(partitions) == orthogonal_array.max() + 1 and orthogonal_array.min() == 0
     ), "Orthogonal array indexing does not match partition structure"
 
     mappings = list()
-    for row in ortogonal_array:
+    for row in orthogonal_array:
         if any(not partitions[p][factor] for factor, p in enumerate(row)):
             continue
 
