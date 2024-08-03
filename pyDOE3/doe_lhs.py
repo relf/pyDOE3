@@ -277,7 +277,7 @@ def _lhsmu(N, samples=None, corr=None, random_state=None, M=5):
 
     if corr is not None:
         # check if covariance matrix is valid
-        assert type(corr) == np.ndarray
+        assert type(corr) is np.ndarray
         assert corr.ndim == 2
         assert corr.shape[0] == corr.shape[1]
         assert corr.shape[0] == N
