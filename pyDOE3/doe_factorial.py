@@ -21,6 +21,7 @@ import string
 import numpy as np
 from scipy.special import binom
 
+from typing import List
 
 __all__ = [
     "fullfact",
@@ -97,10 +98,7 @@ def fullfact(levels):
     return H
 
 
-################################################################################
-
-
-def ff2n(n):
+def ff2n(n_factors: int) -> np.ndarray:
     """
     Create a 2-Level full-factorial design
 
@@ -120,22 +118,67 @@ def ff2n(n):
 
         >>> ff2n(3)
         array([[-1., -1., -1.],
-               [ 1., -1., -1.],
-               [-1.,  1., -1.],
-               [ 1.,  1., -1.],
                [-1., -1.,  1.],
-               [ 1., -1.,  1.],
+               [-1.,  1., -1.],
                [-1.,  1.,  1.],
+               [ 1., -1., -1.],
+               [ 1., -1.,  1.],
+               [ 1.,  1., -1.],
                [ 1.,  1.,  1.]])
-
     """
-    return 2 * fullfact([2] * n) - 1
+    return np.array(list(itertools.product([-1.0, 1.0], repeat=n_factors)))
 
 
-################################################################################
+def validate_generator(n_factors: int, generator: str) -> str:
+    """Validates the generator and thows an error if it is not valid."""
+
+    if len(generator.split(" ")) != n_factors:
+        raise ValueError("Generator does not match the number of factors.")
+    # clean it and transform it into a list
+    generators = [item for item in re.split(r"\-|\s|\+", generator) if item]
+    lengthes = [len(i) for i in generators]
+
+    # Indices of single letters (main factors)
+    idx_main = [i for i, item in enumerate(lengthes) if item == 1]
+
+    if len(idx_main) == 0:
+        raise ValueError("At least one unconfounded main factor is needed.")
+
+    # Check that single letters (main factors) are unique
+    if len(idx_main) != len({generators[i] for i in idx_main}):
+        raise ValueError("Main factors are confounded with each other.")
+
+    # Check that single letters (main factors) follow the alphabet
+    if (
+        "".join(sorted([generators[i] for i in idx_main]))
+        != string.ascii_lowercase[: len(idx_main)]
+    ):
+        raise ValueError(
+            f'Use the letters `{" ".join(string.ascii_lowercase[: len(idx_main)])}` for the main factors.'
+        )
+
+    # Indices of letter combinations.
+    idx_combi = [i for i, item in enumerate(generators) if item != 1]
+
+    # check that main factors come before combinations
+    if min(idx_combi) > max(idx_main):
+        raise ValueError("Main factors have to come before combinations.")
+
+    # Check that letter combinations are unique
+    if len(idx_combi) != len({generators[i] for i in idx_combi}):
+        raise ValueError("Generators are not unique.")
+
+    # Check that only letters are used in the combinations that are also single letters (main factors)
+    if not all(
+        set(item).issubset({generators[i] for i in idx_main})
+        for item in [generators[i] for i in idx_combi]
+    ):
+        raise ValueError("Generators are not valid.")
+
+    return generator
 
 
-def fracfact(gen):
+def fracfact(gen) -> np.ndarray:
     """
     Create a 2-level fractional-factorial design with a generator string.
 
@@ -186,65 +229,59 @@ def fracfact(gen):
 
         >>> fracfact("a b ab")
         array([[-1., -1.,  1.],
-               [ 1., -1., -1.],
                [-1.,  1., -1.],
+               [ 1., -1., -1.],
                [ 1.,  1.,  1.]])
 
         >>> fracfact("A B AB")
         array([[-1., -1.,  1.],
-               [ 1., -1., -1.],
                [-1.,  1., -1.],
+               [ 1., -1., -1.],
                [ 1.,  1.,  1.]])
 
         >>> fracfact("a b -ab c +abc")
         array([[-1., -1., -1., -1., -1.],
-               [ 1., -1.,  1., -1.,  1.],
-               [-1.,  1.,  1., -1.,  1.],
-               [ 1.,  1., -1., -1., -1.],
                [-1., -1., -1.,  1.,  1.],
-               [ 1., -1.,  1.,  1., -1.],
+               [-1.,  1.,  1., -1.,  1.],
                [-1.,  1.,  1.,  1., -1.],
+               [ 1., -1.,  1., -1.,  1.],
+               [ 1., -1.,  1.,  1., -1.],
+               [ 1.,  1., -1., -1., -1.],
                [ 1.,  1., -1.,  1.,  1.]])
 
     """
-    # Recognize letters and combinations
-    A = [item for item in re.split(r"\-|\s|\+", gen) if item]  # remove empty strings
-    C = [len(item) for item in A]
+    gen = validate_generator(n_factors=gen.count(" ") + 1, generator=gen.lower())
+
+    generators = [item for item in re.split(r"\-|\s|\+", gen) if item]
+    lengthes = [len(i) for i in generators]
 
     # Indices of single letters (main factors)
-    I = [i for i, item in enumerate(C) if item == 1]  # noqa
+    idx_main = [i for i, item in enumerate(lengthes) if item == 1]
 
-    # Indices of letter combinations (we need them to fill out H2 properly).
-    J = [i for i, item in enumerate(C) if item != 1]
+    # Indices of letter combinations.
+    idx_combi = [i for i, item in enumerate(generators) if item != 1]
 
-    # Check if there are "-" or "+" operators in gen
-    U = [item for item in gen.split(" ") if item]  # remove empty strings
-
-    # If R1 is either None or not, the result is not changed, since it is a
-    # multiplication of 1.
-    # R1 = _grep(U, "+")
-    R2 = _grep(U, "-")
+    # Check if there are "-" operators in gen
+    idx_negative = [
+        i for i, item in enumerate(gen.split(" ")) if item[0] == "-"
+    ]  # remove empty strings
 
     # Fill in design with two level factorial design
-    H1 = ff2n(len(I))
-    H = np.zeros((H1.shape[0], len(C)))
-    H[:, I] = H1
+    H1 = ff2n(len(idx_main))
+    H = np.zeros((H1.shape[0], len(lengthes)))
+    H[:, idx_main] = H1
 
     # Recognize combinations and fill in the rest of matrix H2 with the proper
     # products
-    for k in J:
+    for k in idx_combi:
         # For lowercase letters
-        xx = np.array([ord(c) for c in A[k]]) - 97
-
-        # For uppercase letters
-        if np.any(xx < 0):
-            xx = np.array([ord(c) for c in A[k]]) - 65
+        xx = np.array([ord(c) for c in generators[k]]) - 97
 
         H[:, k] = np.prod(H1[:, xx], axis=1)
 
     # Update design if gen includes "-" operator
-    if R2:
-        H[:, R2] *= -1
+    if len(idx_negative) > 0:
+        H[:, idx_negative] *= -1
 
     # Return the fractional factorial design
     return H
@@ -304,12 +341,12 @@ def fracfact_by_res(n, res):
     ::
         >>> fracfact_by_res(6, 3)
         array([[-1., -1., -1.,  1.,  1.,  1.],
-               [ 1., -1., -1., -1., -1.,  1.],
-               [-1.,  1., -1., -1.,  1., -1.],
-               [ 1.,  1., -1.,  1., -1., -1.],
                [-1., -1.,  1.,  1., -1., -1.],
-               [ 1., -1.,  1., -1.,  1., -1.],
+               [-1.,  1., -1., -1.,  1., -1.],
                [-1.,  1.,  1., -1., -1.,  1.],
+               [ 1., -1., -1., -1., -1.,  1.],
+               [ 1., -1.,  1., -1.,  1., -1.],
+               [ 1.,  1., -1.,  1., -1., -1.],
                [ 1.,  1.,  1.,  1.,  1.,  1.]])
 
         >>> fracfact_by_res(5, 5)
