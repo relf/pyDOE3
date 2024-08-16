@@ -21,8 +21,6 @@ import string
 import numpy as np
 from scipy.special import binom
 
-from typing import List
-
 __all__ = [
     "fullfact",
     "ff2n",
