@@ -1,9 +1,12 @@
 import unittest
+import numpy as np
+import pytest
+
 from pyDOE3.doe_factorial import fracfact_opt, fullfact
 from pyDOE3.doe_factorial import ff2n
 from pyDOE3.doe_factorial import fracfact
 from pyDOE3.doe_factorial import fracfact_by_res
-import numpy as np
+from pyDOE3.doe_factorial import validate_generator
 
 
 class TestFactorial(unittest.TestCase):
@@ -40,12 +43,12 @@ class TestFactorial(unittest.TestCase):
     def test_factorial2(self):
         expected = [
             [-1.0, -1.0, -1.0],
-            [1.0, -1.0, -1.0],
-            [-1.0, 1.0, -1.0],
-            [1.0, 1.0, -1.0],
             [-1.0, -1.0, 1.0],
-            [1.0, -1.0, 1.0],
+            [-1.0, 1.0, -1.0],
             [-1.0, 1.0, 1.0],
+            [1.0, -1.0, -1.0],
+            [1.0, -1.0, 1.0],
+            [1.0, 1.0, -1.0],
             [1.0, 1.0, 1.0],
         ]
         actual = ff2n(3)
@@ -54,8 +57,8 @@ class TestFactorial(unittest.TestCase):
     def test_factorial3(self):
         expected = [
             [-1.0, -1.0, 1.0],
-            [1.0, -1.0, -1.0],
             [-1.0, 1.0, -1.0],
+            [1.0, -1.0, -1.0],
             [1.0, 1.0, 1.0],
         ]
         actual = fracfact("a b ab")
@@ -64,8 +67,8 @@ class TestFactorial(unittest.TestCase):
     def test_factorial4(self):
         expected = [
             [-1.0, -1.0, 1.0],
-            [1.0, -1.0, -1.0],
             [-1.0, 1.0, -1.0],
+            [1.0, -1.0, -1.0],
             [1.0, 1.0, 1.0],
         ]
         actual = fracfact("A B AB")
@@ -74,12 +77,12 @@ class TestFactorial(unittest.TestCase):
     def test_factorial5(self):
         expected = [
             [-1.0, -1.0, -1.0, -1.0, -1.0],
-            [1.0, -1.0, 1.0, -1.0, 1.0],
-            [-1.0, 1.0, 1.0, -1.0, 1.0],
-            [1.0, 1.0, -1.0, -1.0, -1.0],
             [-1.0, -1.0, -1.0, 1.0, 1.0],
-            [1.0, -1.0, 1.0, 1.0, -1.0],
+            [-1.0, 1.0, 1.0, -1.0, 1.0],
             [-1.0, 1.0, 1.0, 1.0, -1.0],
+            [1.0, -1.0, 1.0, -1.0, 1.0],
+            [1.0, -1.0, 1.0, 1.0, -1.0],
+            [1.0, 1.0, -1.0, -1.0, -1.0],
             [1.0, 1.0, -1.0, 1.0, 1.0],
         ]
         actual = fracfact("a b -ab c +abc")
@@ -88,15 +91,16 @@ class TestFactorial(unittest.TestCase):
     def test_factorial6(self):
         expected = [
             [-1.0, -1.0, -1.0, 1.0, 1.0, 1.0],
-            [1.0, -1.0, -1.0, -1.0, -1.0, 1.0],
-            [-1.0, 1.0, -1.0, -1.0, 1.0, -1.0],
-            [1.0, 1.0, -1.0, 1.0, -1.0, -1.0],
             [-1.0, -1.0, 1.0, 1.0, -1.0, -1.0],
-            [1.0, -1.0, 1.0, -1.0, 1.0, -1.0],
+            [-1.0, 1.0, -1.0, -1.0, 1.0, -1.0],
             [-1.0, 1.0, 1.0, -1.0, -1.0, 1.0],
+            [1.0, -1.0, -1.0, -1.0, -1.0, 1.0],
+            [1.0, -1.0, 1.0, -1.0, 1.0, -1.0],
+            [1.0, 1.0, -1.0, 1.0, -1.0, -1.0],
             [1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
         ]
         actual = fracfact_by_res(6, 3)
+        print(actual)
         np.testing.assert_allclose(actual, expected)
 
     def test_issue_9(self):
@@ -118,3 +122,19 @@ class TestFactorial(unittest.TestCase):
         np.testing.assert_array_equal(
             ffo_doe[2], np.array([0.0, 0.0, 3.0, 4.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
         )
+
+
+@pytest.mark.parametrize(
+    "n_factors, generator, message",
+    [
+        (2, "a b c", "Generator does not match the number of factors."),
+        (2, "a a", "Main factors are confounded with each other."),
+        (2, "a c", "Use the letters `a b` for the main factors."),
+        (5, "a b c ab ab", "Generators are not unique."),
+        (5, "a b c ab ad", "Generators are not valid."),
+        (2, "ab ac", "At least one unconfounded main factor is needed."),
+    ],
+)
+def test_validate_generator_invalid(n_factors: int, generator: str, message: str):
+    with pytest.raises(ValueError, match=message):
+        validate_generator(n_factors, generator)
