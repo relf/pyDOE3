@@ -37,3 +37,9 @@ class TestGsd(unittest.TestCase):
         expected = [[0, 1], [0, 3], [2, 1], [2, 3], [1, 0], [1, 2]]
         actual = gsd([3, 4], 2, n=2)[1]
         np.testing.assert_allclose(actual, expected)
+
+    def test_gsd4(self):
+        expected = [[0, 1, 0], [0, 3, 0], [2, 1, 0], [2, 3, 0], [1, 0, 0],
+                    [1, 2, 0]]
+        actual = gsd([3, 4, 1], 2, n=2)[1]
+        np.testing.assert_allclose(actual, expected)
