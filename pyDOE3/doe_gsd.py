@@ -205,8 +205,8 @@ def _make_partitions(factor_levels, num_partitions):
 
         for num_levels in factor_levels:
             part = list()
-            for level_i in range(1, num_levels):
-                index = partition_i + (level_i - 1) * num_partitions
+            for level_i in range(num_levels):
+                index = partition_i + level_i * num_partitions
                 if index <= num_levels:
                     part.append(index)
 
