@@ -152,7 +152,7 @@ def validate_generator(n_factors: int, generator: str) -> str:
         != string.ascii_lowercase[: len(idx_main)]
     ):
         raise ValueError(
-            f'Use the letters `{" ".join(string.ascii_lowercase[: len(idx_main)])}` for the main factors.'
+            f"Use the letters `{' '.join(string.ascii_lowercase[: len(idx_main)])}` for the main factors."
         )
 
     # Indices of letter combinations.
