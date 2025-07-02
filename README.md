@@ -30,6 +30,8 @@ number of factors:
   - Central-Composite (``ccdesign``)
 - Randomized Designs
   - Latin-Hypercube (``lhs``)
+- Taguchi Designs
+  - Orthogonal arrays and robust design utilities (``taguchi_design``, ``compute_snr``)
   
 See [Documentation](https://pydoe3.readthedocs.io).
 
@@ -73,6 +75,7 @@ References
 - [Box-Behnken designs](http://en.wikipedia.org/wiki/Box-Behnken_design)
 - [Central composite designs](http://en.wikipedia.org/wiki/Central_composite_design)
 - [Latin-Hypercube designs](http://en.wikipedia.org/wiki/Latin_hypercube_sampling)
+- [Taguchi designs](http://en.wikipedia.org/wiki/Taguchi_methods)
 - Surowiec, Izabella, Ludvig Vikström, Gustaf Hector, Erik Johansson,
 Conny Vikström, and Johan Trygg. “Generalized Subset Designs in Analytical
 Chemistry.” Analytical Chemistry 89, no. 12 (June 20, 2017): 6491–97.
