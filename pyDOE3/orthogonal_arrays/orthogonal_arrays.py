@@ -19,7 +19,7 @@ References
 import numpy as np
 from pathlib import Path
 
-ORTHOGONAL_ARRAYS_DIR = Path(__file__).resolve().parent / "OrthogonalArrays"
+ORTHOGONAL_ARRAYS_DIR = Path(__file__).resolve().parent
 
 #   $$ L_4(2^3) $$
 # Taguchi L4 Orthogonal Design
