@@ -32,6 +32,13 @@ from pyDOE3.doe_factorial import (
     fracfact_aliasing,
     alias_vector_indices,
 )
+from pyDOE3.doe_taguchi import (
+    taguchi_design,
+    TaguchiObjective,
+    compute_snr,
+    list_orthogonal_arrays,
+    get_orthogonal_array,
+)
 from pyDOE3.doe_lhs import lhs
 from pyDOE3.doe_fold import fold
 from pyDOE3.doe_plackett_burman import pbdesign
@@ -53,6 +60,11 @@ __all__ = [
     "pbdesign",
     "var_regression_matrix",
     "gsd",
+    "taguchi_design",
+    "TaguchiObjective",
+    "compute_snr",
+    "list_orthogonal_arrays",
+    "get_orthogonal_array",
 ]
 
 from ._version import __version__  # noqa

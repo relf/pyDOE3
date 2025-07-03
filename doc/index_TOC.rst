@@ -8,4 +8,4 @@ Table of Contents
    Factorial Designs <factorial>
    Response Surface Designs <rsm>
    Randomized Designs <randomized>
-
+   Taguchi Designs <taguchi>

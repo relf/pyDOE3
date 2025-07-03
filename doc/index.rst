@@ -5,7 +5,7 @@
 
 
 =====================================================
-``pyDOE3``: An experimental design package for python
+``pyDOE3``: An experimental design package for Python
 =====================================================
 
 **pyDOE3 is fork of pyDOE2 which is a fork of pyDOE.**
@@ -50,7 +50,11 @@ number of factors:
 - :ref:`Randomized Designs <randomized>`
 
   #. :ref:`Latin-Hypercube <latin_hypercube>` (``lhs``)
-  
+
+- :ref:`Taguchi Designs <taguchi_designs>`
+
+  #. Orthogonal arrays and robust design utilities (``taguchi_design``, ``compute_snr``)
+
 Requirements
 ============
 
@@ -109,6 +113,7 @@ References
 - `Box-Behnken designs`_
 - `Central composite designs`_
 - `Latin-Hypercube designs`_
+- `Taguchi designs <https://www.itl.nist.gov/div898/handbook/pri/section5/pri56.htm>`_
 
 There is also a wealth of information on the `NIST`_ website about the
 various design matrices that can be created as well as detailed information
