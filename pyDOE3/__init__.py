@@ -44,6 +44,7 @@ from pyDOE3.doe_fold import fold
 from pyDOE3.doe_plackett_burman import pbdesign
 from pyDOE3.var_regression_matrix import var_regression_matrix
 from pyDOE3.doe_gsd import gsd
+from pyDOE3.doe_doehlert import doehlert_shell_design, doehlert_simplex_design
 
 __all__ = [
     "bbdesign",
@@ -65,6 +66,8 @@ __all__ = [
     "compute_snr",
     "list_orthogonal_arrays",
     "get_orthogonal_array",
+    "doehlert_shell_design",
+    "doehlert_simplex_design",
 ]
 
 from ._version import __version__  # noqa
