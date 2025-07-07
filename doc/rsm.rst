@@ -204,23 +204,23 @@ Examples
 Create a Doehlert design with 3 factors and 1 center point using the shell approach::
 
     >>> doehlert_shell_design(3, num_center_points=1)
-    array([[ 0.        ,  0.        ,  0.        ],
-           [ 1.        ,  0.        ,  0.        ],
-           [-0.5       ,  0.8660254 ,  0.        ],
-           [-0.5       , -0.8660254 ,  0.        ],
-           [ 0.8660254 ,  0.5       ,  0.        ],
-           [ 0.8660254 , -0.5       ,  0.        ],
+    array([[ 0.       ,  0.       ,  0.        ],
+           [ 1.       ,  0.       ,  0.        ],
+           [-0.5      ,  0.8660254,  0.        ],
+           [-0.5      , -0.8660254,  0.        ],
+           [ 0.8660254,  0.5      ,  0.        ],
+           [ 0.8660254, -0.5      ,  0.        ],
            ... ])
 
 Create a Doehlert design using the simplex approach for 3 factors::
 
     >>> doehlert_simplex_design(3)
-    array([[ 0.       ,  0.        , 0.        ],
-           [ 1.       ,  0.        , 0.        ],
-           [ 0.       ,  0.8660254 , 0.        ],
-           [ 0.       ,  0.5       , 0.81649658],
-           [-1.       ,  0.        , 0.        ],
-           [ 0.       , -0.8660254 , 0.        ],
+    array([[ 0.      ,  0.       , 0.        ],
+           [ 1.      ,  0.       , 0.        ],
+           [ 0.      ,  0.8660254, 0.        ],
+           [ 0.      ,  0.5      , 0.81649658],
+           [-1.      ,  0.       , 0.        ],
+           [ 0.      , -0.8660254, 0.        ],
            ... ])
 
 .. note::
