@@ -47,6 +47,8 @@ number of factors:
 
   #. :ref:`Central-Composite <central_composite>` (``ccdesign``)
 
+  #. :ref:`Doehlert Design <doehlert_design>` (``doehlert_shell_design``, ``doehlert_simplex_design``)
+
 - :ref:`Randomized Designs <randomized>`
 
   #. :ref:`Latin-Hypercube <latin_hypercube>` (``lhs``)
@@ -83,7 +85,7 @@ Credits
 
 This code was originally published by the following individuals for use with
 Scilab:
-    
+
 - Copyright (C) 2012 - 2013 - Michael Baudin
 - Copyright (C) 2012 - Maria Christopoulou
 - Copyright (C) 2010 - 2011 - INRIA - Michael Baudin

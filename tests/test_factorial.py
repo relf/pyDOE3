@@ -100,7 +100,6 @@ class TestFactorial(unittest.TestCase):
             [1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
         ]
         actual = fracfact_by_res(6, 3)
-        print(actual)
         np.testing.assert_allclose(actual, expected)
 
     def test_issue_9(self):
