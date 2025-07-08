@@ -332,7 +332,6 @@ There is also a wealth of information on the `NIST`_ website about the
 various design matrices that can be created as well as detailed information
 about designing/setting-up/running experiments in general.
 
-.. _author: mailto:tisimst@gmail.com
 .. _Factorial designs: http://en.wikipedia.org/wiki/Factorial_experiment
 .. _Plackett-Burman designs: http://en.wikipedia.org/wiki/Plackett-Burman_design
 .. _NIST: http://www.itl.nist.gov/div898/handbook/pri/pri.htm

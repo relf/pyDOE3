@@ -108,4 +108,3 @@ For more details, see:
 
 - `NIST Engineering Statistics Handbook - Taguchi Designs <https://www.itl.nist.gov/div898/handbook/pri/section5/pri56.htm>`_
 
-.. _author: mailto:tisimst@gmail.com

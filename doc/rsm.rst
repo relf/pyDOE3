@@ -234,7 +234,7 @@ More Information
 ================
 
 If the user needs more information about appropriate designs, please 
-consult the following articles on Wikipedia:
+consult the following articles:
 
 - `Box-Behnken designs`_
 - `Central composite designs`_
@@ -244,9 +244,6 @@ There is also a wealth of information on the `NIST`_ website about the
 various design matrices that can be created as well as detailed information
 about designing/setting-up/running experiments in general.
 
-Any questions, comments, bug-fixes, etc. can be forwarded to the `author`_.
-
-.. _author: mailto:tisimst@gmail.com
 .. _Box-Behnken designs: http://en.wikipedia.org/wiki/Box-Behnken_design
 .. _Central composite designs: http://en.wikipedia.org/wiki/Central_composite_design
 .. _Doehlert design: https://academic.oup.com/jrsssc/article/19/3/231/6882590

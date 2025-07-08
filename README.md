@@ -78,7 +78,4 @@ References
 - [Doehlert Design](https://academic.oup.com/jrsssc/article/19/3/231/6882590)
 - [Latin-Hypercube designs](http://en.wikipedia.org/wiki/Latin_hypercube_sampling)
 - [Taguchi designs](http://en.wikipedia.org/wiki/Taguchi_methods)
-- Surowiec, Izabella, Ludvig Vikström, Gustaf Hector, Erik Johansson,
-Conny Vikström, and Johan Trygg. “Generalized Subset Designs in Analytical
-Chemistry.” Analytical Chemistry 89, no. 12 (June 20, 2017): 6491–97.
-<https://doi.org/10.1021/acs.analchem.7b00506>.
+- [Generalized Subset Designs](https://doi.org/10.1021/acs.analchem.7b00506)
