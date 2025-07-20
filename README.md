@@ -19,19 +19,25 @@ Capabilities
 The package currently includes functions for creating designs for any
 number of factors:
 
-- Factorial Designs
+- **Factorial Designs**
   - General Full-Factorial (``fullfact``)
   - 2-level Full-Factorial (``ff2n``)
   - 2-level Fractional Factorial (``fracfact``)
   - Plackett-Burman (``pbdesign``)
   - Generalized Subset Designs (``gsd``)
-- Response-Surface Designs
+- **Response-Surface Designs**
   - Box-Behnken (``bbdesign``)
   - Central-Composite (``ccdesign``)
   - Doehlert Design (``doehlert_shell_design``, ``doehlert_simplex_design``)
-- Randomized Designs
+- **Randomized Designs**
   - Latin-Hypercube (``lhs``)
-- Taguchi Designs
+- **Low-Discrepancy Sequences**
+  - Sobol’ Sequence (``sobol_sequence``)
+  - Halton Sequence (``halton_sequence``)
+  - Rank-1 Lattice Design (``rank1_lattice``)
+  - Korobov Sequence (``korobov_sequence``)
+  - Cranley-Patterson Randomization (``cranley_patterson_shift``)
+- **Taguchi Designs**
   - Orthogonal arrays and robust design utilities (``taguchi_design``, ``compute_snr``)
   
 See [Documentation](https://pydoe3.readthedocs.io).
@@ -77,5 +83,8 @@ References
 - [Central composite designs](http://en.wikipedia.org/wiki/Central_composite_design)
 - [Doehlert Design](https://academic.oup.com/jrsssc/article/19/3/231/6882590)
 - [Latin-Hypercube designs](http://en.wikipedia.org/wiki/Latin_hypercube_sampling)
+- [Halton sequence](http://en.wikipedia.org/wiki/Halton_sequence)
+- [Sobol sequence](http://en.wikipedia.org/wiki/Sobol_sequence)
+- [Low-Discrepancy sequences](http://en.wikipedia.org/wiki/Low-discrepancy_sequence)
 - [Taguchi designs](http://en.wikipedia.org/wiki/Taguchi_methods)
 - [Generalized Subset Designs](https://doi.org/10.1021/acs.analchem.7b00506)

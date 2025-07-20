@@ -8,4 +8,5 @@ Table of Contents
    Factorial Designs <factorial>
    Response Surface Designs <rsm>
    Randomized Designs <randomized>
+   Low-Discrepancy Sequences <low_discrepancy_sequences>
    Taguchi Designs <taguchi>
