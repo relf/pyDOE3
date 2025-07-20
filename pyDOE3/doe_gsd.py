@@ -116,12 +116,12 @@ def gsd(levels, reduction, n=1):
 
     """
     try:
-        assert all(isinstance(v, int) for v in levels), (
-            "levels has to be sequence of integers"
-        )
-        assert isinstance(reduction, int) and reduction > 1, (
-            "reduction has to be integer larger than 1"
-        )
+        assert all(
+            isinstance(v, int) for v in levels
+        ), "levels has to be sequence of integers"
+        assert (
+            isinstance(reduction, int) and reduction > 1
+        ), "reduction has to be integer larger than 1"
         assert isinstance(n, int) and n > 0, "n has to be positive integer"
     except AssertionError as e:
         raise ValueError(e)
