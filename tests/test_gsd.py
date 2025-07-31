@@ -1,5 +1,5 @@
 import unittest
-from pyDOE3.doe_gsd import gsd
+from pyDOE3 import gsd
 import numpy as np
 
 

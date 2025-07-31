@@ -2,6 +2,8 @@ import itertools
 
 import numpy as np
 
+__all__ = ["sukharev_grid"]
+
 
 def sukharev_grid(num_points, dimension):
     """Create Sukharev grid in unit hypercube.

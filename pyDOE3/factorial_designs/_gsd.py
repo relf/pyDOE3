@@ -6,6 +6,8 @@ import itertools
 
 import numpy as np
 
+__all__ = ["gsd"]
+
 
 def gsd(levels, reduction, n=1):
     """

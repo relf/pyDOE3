@@ -1,5 +1,5 @@
 import unittest
-from pyDOE3.doe_composite import ccdesign
+from pyDOE3 import ccdesign
 import numpy as np
 
 

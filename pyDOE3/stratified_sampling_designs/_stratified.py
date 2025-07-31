@@ -4,6 +4,17 @@ import random
 import sys
 import numpy as np
 
+__all__ = [
+    "stratified_sampling",
+    "stratify_conventional",
+    "stratify_generalized",
+    "reconstruct_strata_from_points",
+]
+
+# NOTE:
+# This source code is derived from Diversipy:
+# https://www.simonwessing.de/diversipy/doc/
+
 
 def unitcube(dimension):
     """Shortcut to generate a tuple of bounds of the unit hypercube."""
@@ -445,4 +456,5 @@ def reconstruct_strata_from_points(points, cuboid=None):
         stratum2 = (current_points[greater_equal_indices], (new_lower, current_upper))
         remaining_strata.extend((stratum1, stratum2))
     final_strata = [final_strata[tuple(point)] for point in points]
+
     return final_strata

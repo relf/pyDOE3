@@ -1,5 +1,5 @@
 import unittest
-from pyDOE3.doe_plackett_burman import pbdesign
+from pyDOE3 import pbdesign
 import numpy as np
 
 

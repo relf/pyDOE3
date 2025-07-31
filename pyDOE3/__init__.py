@@ -21,9 +21,13 @@ The following individuals forked `pyDOE2` and worked on `pyDOE3`:
 - Copyright (C) 2023 - Rémi Lafage
 """
 
-from pyDOE3.doe_box_behnken import bbdesign
-from pyDOE3.doe_composite import ccdesign
-from pyDOE3.doe_factorial import (
+from pyDOE3.response_surface_designs import (
+    bbdesign,
+    ccdesign,
+    doehlert_shell_design,
+    doehlert_simplex_design,
+)
+from pyDOE3.factorial_designs import (
     fullfact,
     ff2n,
     fracfact,
@@ -31,30 +35,39 @@ from pyDOE3.doe_factorial import (
     fracfact_opt,
     fracfact_aliasing,
     alias_vector_indices,
+    gsd,
+    pbdesign,
+    fold,
 )
-from pyDOE3.doe_taguchi import (
+from pyDOE3.taguchi_designs import (
     taguchi_design,
     TaguchiObjective,
     compute_snr,
     list_orthogonal_arrays,
     get_orthogonal_array,
 )
-from pyDOE3.doe_lhs import lhs
-from pyDOE3.doe_fold import fold
-from pyDOE3.doe_plackett_burman import pbdesign
-from pyDOE3.var_regression_matrix import var_regression_matrix
-from pyDOE3.doe_gsd import gsd
-from pyDOE3.doe_doehlert import doehlert_shell_design, doehlert_simplex_design
-from pyDOE3.doe_cranley_patterson_shift import cranley_patterson_shift
-from pyDOE3.doe_halton import halton_sequence
-from pyDOE3.doe_sobol import sobol_sequence
-from pyDOE3.doe_rank1 import rank1_lattice
-from pyDOE3.doe_korobov import korobov_sequence
-
+from pyDOE3.randomized_designs import lhs, random_uniform, random_k_means
+from pyDOE3.sampling_designs import morris_sampling, saltelli_sampling
+from pyDOE3.utils.var_regression_matrix import var_regression_matrix
+from pyDOE3.low_discrepancy_sequences import (
+    cranley_patterson_shift,
+    halton_sequence,
+    sobol_sequence,
+    rank1_lattice,
+    korobov_sequence,
+)
+from pyDOE3.stratified_sampling_designs import (
+    stratified_sampling,
+    stratify_conventional,
+    stratify_generalized,
+    reconstruct_strata_from_points,
+)
 
 __all__ = [
     "bbdesign",
     "ccdesign",
+    "doehlert_shell_design",
+    "doehlert_simplex_design",
     "fullfact",
     "ff2n",
     "fracfact",
@@ -62,23 +75,41 @@ __all__ = [
     "fracfact_opt",
     "fracfact_aliasing",
     "alias_vector_indices",
-    "lhs",
-    "fold",
-    "pbdesign",
-    "var_regression_matrix",
     "gsd",
+    "pbdesign",
+    "fold",
     "taguchi_design",
     "TaguchiObjective",
     "compute_snr",
     "list_orthogonal_arrays",
     "get_orthogonal_array",
-    "doehlert_shell_design",
-    "doehlert_simplex_design",
+    "lhs",
+    "random_uniform",
+    "random_k_means",
+    "morris_sampling",
+    "saltelli_sampling",
+    "var_regression_matrix",
     "cranley_patterson_shift",
     "halton_sequence",
     "sobol_sequence",
     "rank1_lattice",
     "korobov_sequence",
+    "stratified_sampling",
+    "stratify_conventional",
+    "stratify_generalized",
+    "reconstruct_strata_from_points",
 ]
 
 from ._version import __version__  # pyright: ignore[reportMissingImports] # noqa
+
+__authors__ = [
+    "Michael Baudin",
+    "Maria Christopoulou",
+    "Yann Collette",
+    "Jean-Marc Martinez",
+    "Abraham D. Lee",
+    "Rickard Sjögren",
+    "Daniel Svensson",
+    "Rémi Lafage",
+    "Saud Zahir",
+]

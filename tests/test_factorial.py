@@ -2,11 +2,14 @@ import unittest
 import numpy as np
 import pytest
 
-from pyDOE3.doe_factorial import fracfact_opt, fullfact
-from pyDOE3.doe_factorial import ff2n
-from pyDOE3.doe_factorial import fracfact
-from pyDOE3.doe_factorial import fracfact_by_res
-from pyDOE3.doe_factorial import validate_generator
+from pyDOE3 import (
+    fracfact_opt,
+    fullfact,
+    ff2n,
+    fracfact,
+    fracfact_by_res,
+)
+from pyDOE3.factorial_designs import validate_generator
 
 
 class TestFactorial(unittest.TestCase):

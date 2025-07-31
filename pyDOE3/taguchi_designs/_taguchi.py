@@ -19,7 +19,7 @@ References:
 import numpy as np
 from enum import Enum, unique
 from typing import List, Literal
-from pyDOE3.orthogonal_arrays import ORTHOGONAL_ARRAYS
+from .orthogonal_arrays import ORTHOGONAL_ARRAYS
 
 __all__ = [
     "get_orthogonal_array",

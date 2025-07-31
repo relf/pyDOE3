@@ -1,5 +1,5 @@
 import unittest
-from pyDOE3.doe_repeat_center import repeat_center
+from pyDOE3.factorial_designs import repeat_center
 import numpy as np
 
 

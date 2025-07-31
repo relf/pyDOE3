@@ -16,7 +16,7 @@ uses a linear-time algorithm.
 
 import random
 
-from pyDOE3.doe_rank1 import rank1_lattice
+from ._rank1_lattice import rank1_lattice
 
 __all__ = ["korobov_sequence"]
 

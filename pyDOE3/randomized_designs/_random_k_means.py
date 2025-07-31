@@ -1,12 +1,16 @@
 import numpy as np
 
-from pyDOE3.distance import calc_euclidean_dist_matrix
-from pyDOE3.doe_stratified import stratified_sampling, stratify_generalized
+from pyDOE3.utils.distance import calc_euclidean_dist_matrix
+from pyDOE3.stratified_sampling_designs import (
+    stratified_sampling,
+    stratify_generalized,
+)
 
+__all__ = ["random_k_means"]
 
-def random_uniform(num_points, dimension):
-    """Syntactic sugar for :func:`numpy.random.rand`."""
-    return np.random.rand(num_points, dimension)
+# NOTE:
+# This source code is derived from Diversipy:
+# https://www.simonwessing.de/diversipy/doc/
 
 
 def random_k_means(
@@ -72,6 +76,7 @@ def random_k_means(
     weights = [1.0] * num_points
     if dist_matrix_function is None:
         dist_matrix_function = calc_euclidean_dist_matrix
+
     # begin iteration
     for _ in range(num_steps):
         if callback is not None:
@@ -103,4 +108,5 @@ def random_k_means(
         assert np.all(cluster_centers[nearest_index, :] <= 1.0)
         assert np.all(cluster_centers[nearest_index, :] >= 0.0)
         weights[nearest_index] += 1.0
+
     return cluster_centers

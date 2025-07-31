@@ -1,6 +1,6 @@
 import unittest
 import array as array
-from pyDOE3.doe_star import star
+from pyDOE3.response_surface_designs import star
 import numpy as np
 
 
