@@ -1,5 +1,5 @@
 import unittest
-from pyDOE3.doe_lhs import lhs
+from pyDOE3 import lhs
 import numpy as np
 
 

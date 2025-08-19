@@ -1,5 +1,5 @@
 import unittest
-from pyDOE3.doe_union import union
+from pyDOE3.utils.union import union
 import numpy as np
 
 

@@ -13,10 +13,10 @@ Much thanks goes to these individuals. It has been converted to Python by
 Abraham Lee.
 """
 
-from pyDOE3.doe_factorial import ff2n
-from pyDOE3.doe_star import star
-from pyDOE3.doe_union import union
-from pyDOE3.doe_repeat_center import repeat_center
+from pyDOE3.factorial_designs import ff2n
+from pyDOE3.response_surface_designs._star import star
+from pyDOE3.utils.union import union
+from pyDOE3.factorial_designs import repeat_center
 
 __all__ = ["ccdesign"]
 

@@ -1,5 +1,5 @@
 import unittest
-from pyDOE3.doe_box_behnken import bbdesign
+from pyDOE3 import bbdesign
 import numpy as np
 
 

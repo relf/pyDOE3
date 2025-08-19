@@ -53,6 +53,18 @@ number of factors:
 
   #. :ref:`Latin-Hypercube <latin_hypercube>` (``lhs``)
 
+- :ref:`Low-Discrepancy Sequences <low_discrepancy>`
+
+  #. :ref:`Sobol' Sequence <sobol_sequence>` (``sobol_sequence``)
+
+  #. :ref:`Halton Sequence <halton_sequence>` (``halton_sequence``)
+
+  #. :ref:`Rank-1 Lattice Design <rank1_lattice>` (``rank1_lattice``)
+
+  #. :ref:`Korobov Sequence <korobov_sequence>` (``korobov_sequence``)
+
+  #. :ref:`Cranley-Patterson Randomization <cranley_patterson>` (``cranley_patterson_shift``)
+
 - :ref:`Taguchi Designs <taguchi_designs>`
 
   #. Orthogonal arrays and robust design utilities (``taguchi_design``, ``compute_snr``)
@@ -116,6 +128,9 @@ References
 - `Central composite designs`_
 - `Latin-Hypercube designs`_
 - `Taguchi designs <https://www.itl.nist.gov/div898/handbook/pri/section5/pri56.htm>`_
+- `Halton sequence <https://en.wikipedia.org/wiki/Halton_sequence>`_
+- `Sobol' sequence <https://en.wikipedia.org/wiki/Sobol_sequence>`_
+- `Cranley-Patterson method <https://doi.org/10.1137/0713071>`_
 
 There is also a wealth of information on the `NIST`_ website about the
 various design matrices that can be created as well as detailed information
