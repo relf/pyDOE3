@@ -9,3 +9,4 @@ Table of Contents
    Response Surface Designs <rsm>
    Randomized Designs <randomized>
    Taguchi Designs <taguchi>
+   Optimal Designs <doe_optimal>

@@ -33,6 +33,8 @@ number of factors:
   - Latin-Hypercube (``lhs``)
 - Taguchi Designs
   - Orthogonal arrays and robust design utilities (``taguchi_design``, ``compute_snr``)
+- Optimal Designs
+  - Advanced optimal design algorithms (``doe_optimal``)
   
 See [Documentation](https://pydoe3.readthedocs.io).
 
@@ -79,3 +81,4 @@ References
 - [Latin-Hypercube designs](http://en.wikipedia.org/wiki/Latin_hypercube_sampling)
 - [Taguchi designs](http://en.wikipedia.org/wiki/Taguchi_methods)
 - [Generalized Subset Designs](https://doi.org/10.1021/acs.analchem.7b00506)
+- [Optimal experimental design](https://en.wikipedia.org/wiki/Optimal_experimental_design)
