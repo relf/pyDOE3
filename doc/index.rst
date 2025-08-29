@@ -57,6 +57,10 @@ number of factors:
 
   #. Orthogonal arrays and robust design utilities (``taguchi_design``, ``compute_snr``)
 
+- :ref:`Optimal Designs <optimal_designs>`
+
+  #. Advanced optimal design algorithms (``doe_optimal``)
+
 Requirements
 ============
 
@@ -116,6 +120,7 @@ References
 - `Central composite designs`_
 - `Latin-Hypercube designs`_
 - `Taguchi designs <https://www.itl.nist.gov/div898/handbook/pri/section5/pri56.htm>`_
+- `Optimal experimental design <https://en.wikipedia.org/wiki/Optimal_experimental_design>`_
 
 There is also a wealth of information on the `NIST`_ website about the
 various design matrices that can be created as well as detailed information
