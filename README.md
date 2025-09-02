@@ -6,12 +6,8 @@ pyDOE3: An experimental design package for python
 [![DOI](https://zenodo.org/badge/709347557.svg)](https://zenodo.org/doi/10.5281/zenodo.10958492)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
-`pyDOE3` is a fork of the [`pyDOE2`](https://github.com/clicumu/pyDOE2) package
-that is designed to help the scientist, engineer, statistician, etc., to
+This package is designed to help the scientist, engineer, statistician, etc., to
 construct appropriate experimental designs.
-
-This fork came to life to solve bugs and issues that remained unsolved in the
-original package.
 
 Capabilities
 ------------
@@ -73,6 +69,10 @@ individuals for use with Scilab:
 The following individuals forked `pyDOE` and worked on `pyDOE2`:
 
 - Copyright (C) 2018, Rickard Sjögren and Daniel Svensson
+
+`pyDOE3` is a fork of the [`pyDOE2`](https://github.com/clicumu/pyDOE2). 
+It came to life to solve bugs and issues that remained unsolved in the
+`pyDOE2` package.
 
 License
 -------
