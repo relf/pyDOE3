@@ -53,13 +53,19 @@ number of factors:
 
   #. :ref:`Latin-Hypercube <latin_hypercube>` (``lhs``)
 
+- :ref:`Low-Discrepancy Sequences <low_discrepancy>`
+
+  #. :ref:`Sukharev Grid <sukharev_grid>` (``sukharev_grid``)
+
 - :ref:`Taguchi Designs <taguchi_designs>`
 
   #. Orthogonal arrays and robust design utilities (``taguchi_design``, ``compute_snr``)
 
 - :ref:`Optimal Designs <optimal_designs>`
 
-  #. Advanced optimal design algorithms (``doe_optimal``)
+  #. Advanced optimal design algorithms (``optimal_design``)
+  #. Optimality criteria (``A``, ``C``, ``D``, ``E``, ``G``, ``I``, ``S``, ``T``, ``V``)
+  #. Search algorithms (``Sequential (Dykstra)``, ``Simple Exchange (Wynn-Mitchell)``, ``Fedorov``, ``Modified Fedorov``, ``DETMAX``)
 
 Requirements
 ============

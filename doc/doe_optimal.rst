@@ -27,7 +27,7 @@ Optimal experimental design is based on maximizing or minimizing certain propert
 where X is the model (design) matrix.
 
 Design Matrix (Model Matrix)
----------------------------
+----------------------------
 The design (model) matrix X encodes the relationship between the model parameters and the input variables. For a polynomial model of degree d with k factors:
 
 .. math::
@@ -75,13 +75,6 @@ Optimality Criteria
 
   .. math::
      \text{D-optimality:}\quad \max \det(M)
-
-  D-efficiency:
-
-  .. math::
-     \text{D-efficiency} = \left( \frac{\det(M)_{\text{design}}}{\det(M)_{\text{optimal}}} \right)^{1/p} \times 100\%
-
-  where p is the number of parameters.
 
 - **A-optimality**: Minimizes the average variance of the parameter estimates (trace of the inverse information matrix).
 

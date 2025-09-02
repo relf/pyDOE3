@@ -45,6 +45,7 @@ from pyDOE3.doe_plackett_burman import pbdesign
 from pyDOE3.var_regression_matrix import var_regression_matrix
 from pyDOE3.doe_gsd import gsd
 from pyDOE3.doe_doehlert import doehlert_shell_design, doehlert_simplex_design
+from pyDOE3.grid_designs import sukharev_grid
 
 __all__ = [
     "bbdesign",
@@ -68,6 +69,7 @@ __all__ = [
     "get_orthogonal_array",
     "doehlert_shell_design",
     "doehlert_simplex_design",
+    "sukharev_grid",
 ]
 
 from ._version import __version__  # noqa
