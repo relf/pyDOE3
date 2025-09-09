@@ -46,6 +46,12 @@ from pyDOE3.var_regression_matrix import var_regression_matrix
 from pyDOE3.doe_gsd import gsd
 from pyDOE3.doe_doehlert import doehlert_shell_design, doehlert_simplex_design
 from pyDOE3.grid_designs import sukharev_grid
+from pyDOE3.doe_cranley_patterson_shift import cranley_patterson_shift
+from pyDOE3.doe_halton import halton_sequence
+from pyDOE3.doe_sobol import sobol_sequence
+from pyDOE3.doe_rank1 import rank1_lattice
+from pyDOE3.doe_korobov import korobov_sequence
+
 
 __all__ = [
     "bbdesign",
@@ -70,6 +76,11 @@ __all__ = [
     "doehlert_shell_design",
     "doehlert_simplex_design",
     "sukharev_grid",
+    "cranley_patterson_shift",
+    "halton_sequence",
+    "sobol_sequence",
+    "rank1_lattice",
+    "korobov_sequence",
 ]
 
-from ._version import __version__  # noqa
+from ._version import __version__  # pyright: ignore[reportMissingImports] # noqa
