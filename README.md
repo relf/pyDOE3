@@ -29,6 +29,8 @@ number of factors:
 
 - **Randomized Designs**
   - Latin-Hypercube (``lhs``)
+  - Random K-Means (``random_k_means``)
+  - Random Uniform (``random_uniform``)
 
 - **Low-Discrepancy Sequences**
   - Sukharev Grid (``sukharev_grid``)
