@@ -51,6 +51,8 @@ from pyDOE3.doe_halton import halton_sequence
 from pyDOE3.doe_sobol import sobol_sequence
 from pyDOE3.doe_rank1 import rank1_lattice
 from pyDOE3.doe_korobov import korobov_sequence
+from pyDOE3.doe_random_k_means import random_k_means
+from pyDOE3.doe_random_uniform import random_uniform
 
 
 __all__ = [
@@ -81,6 +83,8 @@ __all__ = [
     "sobol_sequence",
     "rank1_lattice",
     "korobov_sequence",
+    "random_k_means",
+    "random_uniform",
 ]
 
 from ._version import __version__  # pyright: ignore[reportMissingImports] # noqa

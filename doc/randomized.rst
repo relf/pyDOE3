@@ -10,6 +10,8 @@ In this section, the following kinds of *randomized designs* will
 be described:
 
 - Latin-Hypercube
+- Random K-Means
+- Random Uniform
 
 .. hint::
    All available designs can be accessed after a simple import statement::
@@ -124,6 +126,93 @@ distributed with means = [1, 2, 3, 4] and standard deviations = [0.1,
    Methods for "space-filling" designs and "orthogonal" designs are in 
    the works, so stay tuned! However, simply increasing the samples 
    reduces the need for these anyway.
+
+.. index:: Random K-Means
+
+.. _random_k_means:
+
+Random K-Means (``random_k_means``)
+===================================
+
+Random K-Means generates cluster centers using MacQueen's K-Means algorithm. 
+This method creates well-distributed points in the unit hypercube by iteratively 
+updating cluster centers based on randomly sampled points.
+
+Random K-Means designs can be created using the following syntax::
+
+    >>> random_k_means(num_points, dimension, [num_steps, initial_points, callback, random_state])
+
+where 
+
+* **num_points**: an integer that designates the number of cluster centers to generate (required)
+* **dimension**: an integer that designates the dimensionality of the space (required)
+* **num_steps**: an integer that designates the number of iterations (default: 100 * num_points)
+* **initial_points**: an array of initial cluster centers (default: None, which uses random points)
+* **callback**: a callable function called at each step with current cluster centers (default: None)
+* **random_state**: an integer seed for reproducibility (default: None)
+
+The output design contains cluster centers that are well-distributed across the 
+unit hypercube [0, 1]^dimension.
+
+Examples
+--------
+
+A basic 3-point, 2-dimensional Random K-Means design::
+
+    >>> random_k_means(3, 2, random_state=42)
+    array([[0.50047407, 0.49860013],
+           [0.50168345, 0.50033893],
+           [0.49956536, 0.50004765]])
+
+With custom initial points::
+
+    >>> initial = [[0.1, 0.1], [0.5, 0.5], [0.9, 0.9]]
+    >>> random_k_means(3, 2, initial_points=initial, num_steps=50, random_state=42)
+    array([[0.24854237, 0.25041155],
+           [0.50043582, 0.50058412],
+           [0.75123745, 0.74896743]])
+
+.. index:: Random Uniform
+
+.. _random_uniform:
+
+Random Uniform (``random_uniform``)
+===================================
+
+Random Uniform generates random samples from a uniform distribution over the 
+half-open interval [0, 1). This is a simple wrapper around ``numpy.random.rand`` 
+that provides a consistent interface with other pyDOE3 functions.
+
+Random Uniform designs can be created using the following syntax::
+
+    >>> random_uniform(num_points, dimension)
+
+where 
+
+* **num_points**: an integer that designates the number of random points to generate (required)
+* **dimension**: an integer that designates the dimensionality of each point (required)
+
+The output design contains completely random points uniformly distributed in 
+the unit hypercube [0, 1)^dimension.
+
+Examples
+--------
+
+A basic 5-point, 3-dimensional Random Uniform design::
+
+    >>> np.random.seed(42)  # For reproducibility
+    >>> random_uniform(5, 3)
+    array([[0.37454012, 0.95071431, 0.73199394],
+           [0.59865848, 0.15601864, 0.15599452], 
+           [0.05808361, 0.86617615, 0.60111501],
+           [0.70807258, 0.02058449, 0.96990985],
+           [0.83244264, 0.21233911, 0.18182497]])
+
+For 2D visualization::
+
+    >>> np.random.seed(123)
+    >>> points = random_uniform(20, 2)
+    >>> # Points are completely random with no structure
 
 .. index:: Latin-Hypercube Designs Support
 

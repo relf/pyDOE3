@@ -52,6 +52,8 @@ number of factors:
 - :ref:`Randomized Designs <randomized>`
 
   #. :ref:`Latin-Hypercube <latin_hypercube>` (``lhs``)
+  #. :ref:`Random K-Means <random_k_means>` (``random_k_means``)
+  #. :ref:`Random Uniform <random_uniform>` (``random_uniform``)
 
 - :ref:`Low-Discrepancy Sequences <low_discrepancy>`
 
