@@ -57,19 +57,20 @@ def sobol_sequence(
     design : ndarray of shape (`n`, `d`)
         Array of Sobol' points in [0, 1)^d, or scaled to `bounds` if provided.
     """
+    # Create sampler (common for both paths)
+    sampler = qmc.Sobol(d=d, scramble=scramble, seed=seed)
+    if skip > 0:
+        sampler.fast_forward(skip)
+
     if use_pow_of_2:
         # Ensure n is power of 2 for best balance properties
         if not (n > 0 and (n & (n - 1)) == 0):
             n = 2 ** int(np.ceil(np.log2(n)))
-
-    m = int(np.log2(n))
-
-    sampler = qmc.Sobol(d=d, scramble=scramble, seed=seed)
-
-    if skip > 0:
-        sampler.fast_forward(skip)
-
-    samples = sampler.random_base2(m)
+        m = int(np.log2(n))
+        samples = sampler.random_base2(m)
+    else:
+        # Generate exactly n samples
+        samples = sampler.random(n)
 
     if bounds is not None:
         bounds = np.asarray(bounds)
