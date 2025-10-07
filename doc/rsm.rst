@@ -109,7 +109,7 @@ where
 
 - ``alpha`` is either "orthogonal" (or "o", default) or "rotatable" 
   (or "r")
-  
+
 - ``face`` is either "circumscribed" (or "ccc", default), "inscribed"
   (or "cci"), or "faced" (or "ccf").
 

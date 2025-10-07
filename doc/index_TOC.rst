@@ -12,3 +12,4 @@ Table of Contents
    Sampling Designs <sampling_designs>
    Taguchi Designs <taguchi>
    Optimal Designs <doe_optimal>
+   Sparse Grid Designs <sparse_grids>

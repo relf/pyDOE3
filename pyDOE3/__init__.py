@@ -56,6 +56,12 @@ from pyDOE3.doe_random_uniform import random_uniform
 from pyDOE3.doe_vanilla_morris import morris_sampling
 from pyDOE3.doe_saltelli import saltelli_sampling
 from pyDOE3.utils import scale_samples
+from pyDOE3.doe_sparse_grid import (
+    doe_sparse_grid,
+    sparse_grid_dimension,
+    doe_sparse_cc,
+    doe_sparse_chebyshev,
+)
 
 
 __all__ = [
@@ -91,6 +97,10 @@ __all__ = [
     "morris_sampling",
     "saltelli_sampling",
     "scale_samples",
+    "doe_sparse_grid",
+    "sparse_grid_dimension",
+    "doe_sparse_cc",
+    "doe_sparse_chebyshev",
 ]
 
 from ._version import __version__  # pyright: ignore[reportMissingImports] # noqa

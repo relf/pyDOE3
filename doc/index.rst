@@ -52,7 +52,9 @@ number of factors:
 - :ref:`Randomized Designs <randomized>`
 
   #. :ref:`Latin-Hypercube <latin_hypercube>` (``lhs``)
+
   #. :ref:`Random K-Means <random_k_means>` (``random_k_means``)
+
   #. :ref:`Random Uniform <random_uniform>` (``random_uniform``)
 
 - :ref:`Low-Discrepancy Sequences <low_discrepancy>`
@@ -83,6 +85,16 @@ number of factors:
   #. Advanced optimal design algorithms (``optimal_design``)
   #. Optimality criteria (``A``, ``C``, ``D``, ``E``, ``G``, ``I``, ``S``, ``T``, ``V``)
   #. Search algorithms (``Sequential (Dykstra)``, ``Simple Exchange (Wynn-Mitchell)``, ``Fedorov``, ``Modified Fedorov``, ``DETMAX``)
+
+- :ref:`Sparse Grid Designs <sparse_grids>`
+
+  #. :ref:`Sparse Grid Design <doe_sparse_grid>` (``doe_sparse_grid``)
+
+  #. :ref:`Sparse Grid Dimension <sparse_grid_dimension>` (``sparse_grid_dimension``)
+
+  #. :ref:`Clenshaw-Curtis Grid Design <doe_sparse_cc>` (``doe_sparse_cc``)
+
+  #. :ref:`Chebyshev Grid Design <doe_sparse_chebyshev>` (``doe_sparse_chebyshev``)
 
 Requirements
 ============
