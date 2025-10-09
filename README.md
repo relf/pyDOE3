@@ -40,6 +40,10 @@ number of factors:
   - Korobov Sequence (``korobov_sequence``)
   - Cranley-Patterson Randomization (``cranley_patterson_shift``)
 
+- **Sampling Designs**
+  - Morris Method (``morris_sampling``)
+  - Saltelli Sampling (``saltelli_sampling``)
+
 - **Taguchi Designs**
   - Orthogonal arrays and robust design utilities (``taguchi_design``, ``compute_snr``)
 

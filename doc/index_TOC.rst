@@ -9,5 +9,6 @@ Table of Contents
    Response Surface Designs <rsm>
    Randomized Designs <randomized>
    Low-Discrepancy Sequences <low_discrepancy_sequences>
+   Sampling Designs <sampling_designs>
    Taguchi Designs <taguchi>
    Optimal Designs <doe_optimal>

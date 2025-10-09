@@ -69,6 +69,11 @@ number of factors:
 
   #. :ref:`Cranley-Patterson Randomization <cranley_patterson>` (``cranley_patterson_shift``)
 
+- :ref:`Sampling Designs <sampling_designs>`
+
+  #. :ref:`Morris Method <morris_method>` (``morris_sampling``)
+  #. :ref:`Saltelli Sampling <saltelli_sampling>` (``saltelli_sampling``)
+
 - :ref:`Taguchi Designs <taguchi_designs>`
 
   #. Orthogonal arrays and robust design utilities (``taguchi_design``, ``compute_snr``)

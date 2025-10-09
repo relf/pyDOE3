@@ -211,8 +211,8 @@ References
 ==========
 .. [Sukharev1971] Sukharev, A. G. (1971). "Optimal strategies of the search for an extremum." *USSR Computational Mathematics and Mathematical Physics*, 11(4), 119-137. https://doi.org/10.1016/0041-5553(71)90008-5
 
-.. [CranleyPatterson1976] Cranley, R., and Patterson, T. N. L. (1976). "Randomization of Number Theoretic Methods for Multiple Integration." *SIAM Journal on Numerical Analysis*, 13(6), 904–914. https://doi.org/10.1137/0713071
+.. [CranleyPatterson1976] Cranley, R., and Patterson, T. N. L. (1976). "Randomization of Number Theoretic Methods for Multiple Integration." *SIAM Journal on Numerical Analysis*, 13(6), 904-914. https://doi.org/10.1137/0713071
 
 .. [Halton1964] Halton, J. H. (1964). "Algorithm 247: Radical-inverse quasi-random point sequence." *Communications of the ACM*, 7(12), 701. https://doi.org/10.1145/355588.365104
 
-.. [Sobol1967] Sobol', I. M. (1967). "Distribution of points in a cube and approximate evaluation of integrals." *Zh. Vych. Mat. Mat. Fiz.*, 7: 784-802 (in Russian); *U.S.S.R. Comput. Maths. Math. Phys.*, 7: 86–112.
+.. [Sobol1967] Sobol', I. M. (1967). "Distribution of points in a cube and approximate evaluation of integrals." *Zh. Vych. Mat. Mat. Fiz.*, 7: 784-802 (in Russian); *U.S.S.R. Comput. Maths. Math. Phys.*, 7: 86-112.

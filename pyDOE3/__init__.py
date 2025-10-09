@@ -53,6 +53,9 @@ from pyDOE3.doe_rank1 import rank1_lattice
 from pyDOE3.doe_korobov import korobov_sequence
 from pyDOE3.doe_random_k_means import random_k_means
 from pyDOE3.doe_random_uniform import random_uniform
+from pyDOE3.doe_vanilla_morris import morris_sampling
+from pyDOE3.doe_saltelli import saltelli_sampling
+from pyDOE3.utils import scale_samples
 
 
 __all__ = [
@@ -85,6 +88,9 @@ __all__ = [
     "korobov_sequence",
     "random_k_means",
     "random_uniform",
+    "morris_sampling",
+    "saltelli_sampling",
+    "scale_samples",
 ]
 
 from ._version import __version__  # pyright: ignore[reportMissingImports] # noqa
