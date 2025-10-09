@@ -18,13 +18,11 @@ Interpolation Toolbox by:
 
 import itertools
 import numpy as np
-from typing import Literal, Union
+from typing import Literal
 
 __all__ = [
     "doe_sparse_grid",
     "sparse_grid_dimension",
-    "doe_sparse_cc",
-    "doe_sparse_chebyshev",
 ]
 
 
@@ -34,7 +32,6 @@ def doe_sparse_grid(
     grid_type: Literal[
         "clenshaw_curtis", "chebyshev", "gauss_patterson"
     ] = "clenshaw_curtis",
-    bounds: Union[np.ndarray, None] = None,
 ) -> np.ndarray:
     """
     Generate a sparse grid design using Smolyak's construction.
@@ -47,13 +44,11 @@ def doe_sparse_grid(
         Number of factors/dimensions in the design space.
     grid_type : {'clenshaw_curtis', 'chebyshev', 'gauss_patterson'}, default 'clenshaw_curtis'
         Type of 1D grid points to use.
-    bounds : array_like of shape (n_factors, 2), optional
-        Bounds for each dimension. If None, uses unit hypercube [0, 1]^n_factors.
 
     Returns
     -------
     design : ndarray of shape (n_points, n_factors)
-        Sparse grid design points.
+        Sparse grid design points in the unit hypercube [0, 1]^n_factors.
 
     References
     ----------
@@ -65,20 +60,8 @@ def doe_sparse_grid(
     if n_factors < 1:
         raise ValueError("n_factors must be positive")
 
-    if bounds is not None:
-        bounds = np.asarray(bounds)
-        if bounds.shape != (n_factors, 2):
-            raise ValueError(f"bounds must have shape ({n_factors}, 2)")
-        if np.any(bounds[:, 0] >= bounds[:, 1]):
-            raise ValueError("bounds must have min < max for each dimension")
-
     # Generate sparse grid points
     design = _generate_sparse_grid_points(n_level, n_factors, grid_type)
-
-    # Apply bounds transformation if provided
-    if bounds is not None:
-        for i in range(n_factors):
-            design[:, i] = bounds[i, 0] + design[:, i] * (bounds[i, 1] - bounds[i, 0])
 
     return design
 
@@ -228,19 +211,3 @@ def _generate_sparse_grid_points(
                     break
 
     return np.array(unique_points[:target_count])
-
-
-def doe_sparse_cc(
-    n_level: int, n_factors: int, bounds: Union[np.ndarray, None] = None
-) -> np.ndarray:
-    """Generate Clenshaw-Curtis sparse grid design."""
-    return doe_sparse_grid(
-        n_level, n_factors, grid_type="clenshaw_curtis", bounds=bounds
-    )
-
-
-def doe_sparse_chebyshev(
-    n_level: int, n_factors: int, bounds: Union[np.ndarray, None] = None
-) -> np.ndarray:
-    """Generate Chebyshev sparse grid design."""
-    return doe_sparse_grid(n_level, n_factors, grid_type="chebyshev", bounds=bounds)

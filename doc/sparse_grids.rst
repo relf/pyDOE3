@@ -14,7 +14,7 @@ full grid approaches in high-dimensional spaces.
 .. hint::
    All sparse grid functions are available with::
 
-    >>> from pyDOE3 import doe_sparse_grid, sparse_grid_dimension, doe_sparse_cc, doe_sparse_chebyshev
+    >>> from pyDOE3 import doe_sparse_grid, sparse_grid_dimension
 
 Overview
 ========
@@ -43,7 +43,7 @@ This implementation exactly matches MATLAB spinterp's theoretical point counts.
 
 **Syntax**::
 
-    >>> doe_sparse_grid(n_level, n_factors, grid_type='clenshaw_curtis', bounds=None)
+    >>> doe_sparse_grid(n_level, n_factors, grid_type='clenshaw_curtis')
 
 **Parameters**:
 
@@ -61,14 +61,10 @@ This implementation exactly matches MATLAB spinterp's theoretical point counts.
     - ``'chebyshev'``: Chebyshev polynomial extrema points  
     - ``'gauss_patterson'``: Gauss-Patterson quadrature points
 
-- ``bounds`` : array_like of shape (n_factors, 2), optional
-    Bounds for each dimension. Each row should be [min, max].
-    If None, uses unit hypercube [0, 1]^n_factors.
-
 **Returns**:
 
 - ``design`` : ndarray of shape (n_points, n_factors)
-    Sparse grid design points.
+    Sparse grid design points in the unit hypercube [0, 1]^n_factors.
 
 **Examples**::
 
@@ -80,9 +76,8 @@ This implementation exactly matches MATLAB spinterp's theoretical point counts.
     >>> print(f"Generated {len(design)} points in 2D")
     Generated 29 points in 2D
 
-    >>> # High-dimensional sparse grid with custom bounds
-    >>> bounds = np.array([[-1, 1], [0, 2], [-5, 5], [1, 10]])
-    >>> design = doe_sparse_grid(n_level=4, n_factors=4, bounds=bounds)
+    >>> # High-dimensional sparse grid
+    >>> design = doe_sparse_grid(n_level=4, n_factors=4)
     >>> print(f"4D design with {len(design)} points")
     4D design with 177 points
 
@@ -130,59 +125,7 @@ actual points. This is useful for planning and memory estimation.
     ...     count = sparse_grid_dimension(level, 4)
     ...     print(f"Level {level}: {count} points")
 
-.. index:: Clenshaw-Curtis Grid
 
-.. _doe_sparse_cc:
-
-Clenshaw-Curtis Grid Design (``doe_sparse_cc``)
-================================================
-
-Convenience function for generating Clenshaw-Curtis sparse grids, which are
-nested and provide good convergence properties for most applications.
-
-**Syntax**::
-
-    >>> doe_sparse_cc(n_level, n_factors, bounds=None)
-
-- ``n_level``: Sparse grid level (integer ≥ 0)
-- ``n_factors``: Number of factors/dimensions (integer ≥ 1)
-- ``bounds``: Optional array of shape (n_factors, 2) for custom bounds
-
-**Returns**: 2D numpy array of shape (n_points, n_factors)
-
-**Example**::
-
-    >>> design = doe_sparse_cc(n_level=5, n_factors=3)
-    >>> print(f"CC grid shape: {design.shape}")
-    CC grid shape: (581, 3)
-
-.. index:: Chebyshev Grid
-
-.. _doe_sparse_chebyshev:
-
-Chebyshev Grid Design (``doe_sparse_chebyshev``)
-=================================================
-
-Convenience function for generating Chebyshev sparse grids using points at
-the extrema of Chebyshev polynomials.
-
-**Syntax**::
-
-    >>> doe_sparse_chebyshev(n_level, n_factors, bounds=None)
-
-- ``n_level``: Sparse grid level (integer ≥ 0)
-- ``n_factors``: Number of factors/dimensions (integer ≥ 1)
-- ``bounds``: Optional array of shape (n_factors, 2) for custom bounds
-
-**Returns**: 2D numpy array of shape (n_points, n_factors)
-
-**Example**::
-
-    >>> # Custom bounds for each dimension
-    >>> bounds = np.array([[-1, 1], [0, 2]])
-    >>> design = doe_sparse_chebyshev(n_level=4, n_factors=2, bounds=bounds)
-    >>> print(f"Chebyshev grid shape: {design.shape}")
-    Chebyshev grid shape: (145, 2)
 
 Mathematical Background
 =======================
@@ -232,9 +175,8 @@ Generate a sparse grid design for 3 factors at level 4::
     >>> n_points = sparse_grid_dimension(n_level=4, n_factors=3)
     >>> print(f"Expected points: {n_points}")
     >>> 
-    >>> # Generate grid with custom bounds
-    >>> bounds = np.array([[-1, 1], [0, 2], [-5, 5]])
-    >>> design = doe_sparse_grid(n_level=4, n_factors=3, bounds=bounds)
+    >>> # Generate sparse grid
+    >>> design = doe_sparse_grid(n_level=4, n_factors=3)
     >>> print(f"Generated: {design.shape}")
     Generated: (177, 3)
 
@@ -245,11 +187,11 @@ References
 
 .. [Genz1987] Genz, A. (1987). A package for testing multiple integration subroutines. 
     In P. Keast & G. Fairweather (Eds.), *Numerical Integration: Recent Developments, 
-    Software and Applications* (pp. 337-340). Reidel. ISBN: 9027725144.
+    Software and Applications* (pp. 337-340). Reidel. ISBN: 9027725144. https://doi.org/10.1007/978-94-009-3889-2_33
 
 .. [Klimke2005] Klimke, A., & Wohlmuth, B. (2005). Algorithm 847: SPINTERP: Piecewise 
     multilinear hierarchical sparse grid interpolation in MATLAB. *ACM Transactions on 
-    Mathematical Software*, 31(4), 561-579.
+    Mathematical Software*, 31(4), 561-579. https://doi.org/10.1145/1114268.1114275
 
 .. [Klimke2006] Klimke, A. (2006). *SPINTERP V2.1: Piecewise multilinear hierarchical 
     sparse grid interpolation in MATLAB: Documentation*.

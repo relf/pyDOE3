@@ -3,8 +3,6 @@ import pytest
 from pyDOE3.doe_sparse_grid import (
     doe_sparse_grid,
     sparse_grid_dimension,
-    doe_sparse_cc,
-    doe_sparse_chebyshev,
 )
 
 
@@ -28,19 +26,16 @@ class TestSparseGridExamples:
         assert len(design) == expected_points
         assert design.shape[1] == dims
 
-        # Test with custom domain [0,2] x [-1,1] as in spdemo.m
-        bounds = np.array([[0, 2], [-1, 1]])
-        design_bounded = doe_sparse_grid(level, dims, bounds=bounds)
-
-        assert len(design_bounded) == expected_points
-        assert np.all(design_bounded[:, 0] >= 0) and np.all(design_bounded[:, 0] <= 2)
-        assert np.all(design_bounded[:, 1] >= -1) and np.all(design_bounded[:, 1] <= 1)
-
-        # Test function evaluation like in spdemo.m
+        # Test function evaluation like in spdemo.m (scale points to [0,2] x [-1,1])
         def test_function(x, y):
             return 1.0 / ((x * 2 - 0.3) ** 4 + (y * 3 - 0.7) ** 2 + 1)
 
-        function_values = test_function(design_bounded[:, 0], design_bounded[:, 1])
+        # Scale design from [0,1] to [0,2] x [-1,1] for function evaluation
+        design_scaled = design.copy()
+        design_scaled[:, 0] = design[:, 0] * 2  # Scale x from [0,1] to [0,2]
+        design_scaled[:, 1] = design[:, 1] * 2 - 1  # Scale y from [0,1] to [-1,1]
+
+        function_values = test_function(design_scaled[:, 0], design_scaled[:, 1])
         assert np.all(np.isfinite(function_values))
         assert np.all(function_values > 0)
 
@@ -158,57 +153,21 @@ class TestSparseGridExamples:
             assert design.shape[1] == dims
             assert np.all(design >= 0.0) and np.all(design <= 1.0)
 
-    def test_convenience_functions(self):
+    def test_grid_types(self):
         level, dims = 2, 3
         expected_count = 25  # MATLAB verified
 
-        # Test Clenshaw-Curtis convenience function
-        design_cc = doe_sparse_cc(level, dims)
-        design_main = doe_sparse_grid(level, dims, grid_type="clenshaw_curtis")
-
+        # Test Clenshaw-Curtis grid type
+        design_cc = doe_sparse_grid(level, dims, grid_type="clenshaw_curtis")
         assert len(design_cc) == expected_count
-        np.testing.assert_array_equal(design_cc, design_main)
 
-        # Test Chebyshev convenience function
-        design_cheb = doe_sparse_chebyshev(level, dims)
-        design_main_cheb = doe_sparse_grid(level, dims, grid_type="chebyshev")
-
+        # Test Chebyshev grid type
+        design_cheb = doe_sparse_grid(level, dims, grid_type="chebyshev")
         assert len(design_cheb) == expected_count
-        np.testing.assert_array_equal(design_cheb, design_main_cheb)
 
-    def test_bounds_handling(self):
-        level, dims = 2, 2
-
-        # Test various domains used in MATLAB examples
-        test_domains = [
-            np.array([[0, 2], [-1, 1]]),  # spdemo.m domain
-            np.array([[-1, 1], [-1, 1]]),  # Standard symmetric domain
-            np.array([[0, 1], [0, 1]]),  # Unit square (testfunctions.m)
-        ]
-
-        for bounds in test_domains:
-            design = doe_sparse_grid(level, dims, bounds=bounds)
-
-            # Check bounds are respected
-            for i in range(dims):
-                assert np.all(design[:, i] >= bounds[i, 0])
-                assert np.all(design[:, i] <= bounds[i, 1])
-
-            # Check that transformation actually occurred (not just unit cube)
-            if not np.allclose(bounds, [[0, 1], [0, 1]]):
-                # Should have points at bounds extremes or close to them
-                range_x = design[:, 0].max() - design[:, 0].min()
-                range_y = design[:, 1].max() - design[:, 1].min()
-                expected_range_x = bounds[0, 1] - bounds[0, 0]
-                expected_range_y = bounds[1, 1] - bounds[1, 0]
-
-                # The actual range should be a reasonable fraction of expected range
-                assert range_x >= 0.5 * expected_range_x, (
-                    f"X range {range_x} too small for bounds {bounds[0]}"
-                )
-                assert range_y >= 0.5 * expected_range_y, (
-                    f"Y range {range_y} too small for bounds {bounds[1]}"
-                )
+        # Test Gauss-Patterson grid type
+        design_gp = doe_sparse_grid(level, dims, grid_type="gauss_patterson")
+        assert len(design_gp) == expected_count
 
     def test_high_dimensional_efficiency(self):
         # Test cases inspired by spcompare.m high-dimensional tests
@@ -241,14 +200,6 @@ class TestSparseGridExamples:
         with pytest.raises(ValueError, match="n_factors must be positive"):
             doe_sparse_grid(2, 0)
 
-        with pytest.raises(ValueError, match="bounds must have shape"):
-            bounds = np.array([[0, 1]])  # Wrong shape for 2D
-            doe_sparse_grid(2, 2, bounds=bounds)
-
-        with pytest.raises(ValueError, match="bounds must have min < max"):
-            bounds = np.array([[1, 0], [0, 1]])  # Invalid bounds
-            doe_sparse_grid(2, 2, bounds=bounds)
-
     def test_reproducibility(self):
         level, dims = 3, 2
 
@@ -256,10 +207,3 @@ class TestSparseGridExamples:
         design2 = doe_sparse_grid(level, dims)
 
         np.testing.assert_array_equal(design1, design2)
-
-        # Test with bounds
-        bounds = np.array([[-1, 1], [0, 2]])
-        design1_bounded = doe_sparse_grid(level, dims, bounds=bounds)
-        design2_bounded = doe_sparse_grid(level, dims, bounds=bounds)
-
-        np.testing.assert_array_equal(design1_bounded, design2_bounded)

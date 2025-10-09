@@ -59,8 +59,6 @@ from pyDOE3.utils import scale_samples
 from pyDOE3.doe_sparse_grid import (
     doe_sparse_grid,
     sparse_grid_dimension,
-    doe_sparse_cc,
-    doe_sparse_chebyshev,
 )
 
 
@@ -99,8 +97,6 @@ __all__ = [
     "scale_samples",
     "doe_sparse_grid",
     "sparse_grid_dimension",
-    "doe_sparse_cc",
-    "doe_sparse_chebyshev",
 ]
 
 from ._version import __version__  # pyright: ignore[reportMissingImports] # noqa

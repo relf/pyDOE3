@@ -59,8 +59,6 @@ number of factors:
 - **Sparse Grid Designs**
   - Sparse Grid Design (``doe_sparse_grid``)
   - Sparse Grid Dimension (``sparse_grid_dimension``)
-  - Clenshaw-Curtis Grid Design (``doe_sparse_cc``)
-  - Chebyshev Grid Design (``doe_sparse_chebyshev``)
 
 See [Documentation](https://pydoe3.readthedocs.io).
 

@@ -92,10 +92,6 @@ number of factors:
 
   #. :ref:`Sparse Grid Dimension <sparse_grid_dimension>` (``sparse_grid_dimension``)
 
-  #. :ref:`Clenshaw-Curtis Grid Design <doe_sparse_cc>` (``doe_sparse_cc``)
-
-  #. :ref:`Chebyshev Grid Design <doe_sparse_chebyshev>` (``doe_sparse_chebyshev``)
-
 Requirements
 ============
 
