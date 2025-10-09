@@ -82,7 +82,6 @@ class TestLhs(unittest.TestCase):
     def test_lhs3(self):
         expected = [[0.9, 0.1], [0.1, 0.7], [0.5, 0.9], [0.7, 0.5], [0.3, 0.3]]
         actual = lhs(2, samples=5, criterion="center", seed=42)
-        print(actual)
         np.testing.assert_allclose(actual, expected)
 
     def test_lhs4(self):
@@ -93,7 +92,6 @@ class TestLhs(unittest.TestCase):
             [0.00770446, 0.88925804, 0.57339844],
         ]
         actual = lhs(3, samples=4, criterion="maximin", seed=42)
-        print(actual)
         np.testing.assert_allclose(actual, expected, atol=1e-6)
 
     def test_lhs5(self):

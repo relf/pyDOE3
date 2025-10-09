@@ -74,6 +74,7 @@ number of factors:
 - :ref:`Sampling Designs <sampling_designs>`
 
   #. :ref:`Morris Method <morris_method>` (``morris_sampling``)
+
   #. :ref:`Saltelli Sampling <saltelli_sampling>` (``saltelli_sampling``)
 
 - :ref:`Taguchi Designs <taguchi_designs>`
@@ -83,7 +84,9 @@ number of factors:
 - :ref:`Optimal Designs <optimal_designs>`
 
   #. Advanced optimal design algorithms (``optimal_design``)
+
   #. Optimality criteria (``A``, ``C``, ``D``, ``E``, ``G``, ``I``, ``S``, ``T``, ``V``)
+
   #. Search algorithms (``Sequential (Dykstra)``, ``Simple Exchange (Wynn-Mitchell)``, ``Fedorov``, ``Modified Fedorov``, ``DETMAX``)
 
 - :ref:`Sparse Grid Designs <sparse_grids>`
