@@ -19,6 +19,8 @@ from scipy import stats
 from scipy import linalg
 from numpy import ma
 
+from warnings import warn
+
 __all__ = ["lhs"]
 
 
@@ -29,6 +31,7 @@ def lhs(
     iterations=None,
     random_state=None,
     correlation_matrix=None,
+    seed=None,
 ):
     """
     Generate a latin-hypercube design
@@ -50,9 +53,12 @@ def lhs(
         The number of iterations in the maximin and correlations algorithms
         (Default: 5).
     randomstate : np.random.RandomState, int
+         DEPRECATED! It will be removed in a future release. Use seed parameter instead.
          Random state (or seed-number) which controls the seed and random draws
     correlation_matrix : ndarray
          Enforce correlation between factors (only used in lhsmu)
+    seed : int or np.random.Generator
+         Seed or np.random.Generator which controls random draws
 
     Returns
     -------
@@ -111,9 +117,30 @@ def lhs(
     H = None
 
     if random_state is None:
-        random_state = np.random.RandomState()
+        random_state = np.random.default_rng()
+    elif isinstance(random_state, np.random.RandomState):
+        warn(
+            "Using random_state is deprecated "
+            "and will raise an error in a future version. Please "
+            "use seed parameter and pass a np.random.Generator",
+            DeprecationWarning,
+            stacklevel=2,
+        )
     elif not isinstance(random_state, np.random.RandomState):
+        warn(
+            "Passing a seed or integer to random_state is deprecated "
+            "and will raise an error in a future version. Please "
+            "use seed parameter",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         random_state = np.random.RandomState(random_state)
+
+    if seed is not None:
+        if isinstance(seed, np.random.Generator):
+            random_state = seed
+        else:
+            random_state = np.random.default_rng(seed)
 
     if samples is None:
         samples = n
@@ -164,7 +191,11 @@ def _lhsclassic(n, samples, randomstate):
     cut = np.linspace(0, 1, samples + 1)
 
     # Fill points uniformly in each interval
-    u = randomstate.rand(samples, n)
+    u = (
+        randomstate.rand(samples, n)
+        if isinstance(randomstate, np.random.RandomState)
+        else randomstate.random((samples, n))
+    )
     a = cut[:samples]
     b = cut[1 : samples + 1]
     rdpoints = np.zeros_like(u)
@@ -188,7 +219,11 @@ def _lhscentered(n, samples, randomstate):
     cut = np.linspace(0, 1, samples + 1)
 
     # Fill points uniformly in each interval
-    u = randomstate.rand(samples, n)
+    u = (
+        randomstate.rand(samples, n)
+        if isinstance(randomstate, np.random.RandomState)
+        else randomstate.random((samples, n))
+    )
     a = cut[:samples]
     b = cut[1 : samples + 1]
     _center = (a + b) / 2
