@@ -10,8 +10,7 @@ class TestRandomUniform(unittest.TestCase):
         dimension = 3
 
         # Set random seed for reproducibility
-        np.random.seed(42)
-        result = random_uniform(num_points, dimension)
+        result = random_uniform(num_points, dimension, seed=42)
 
         # Check output shape
         self.assertEqual(result.shape, (num_points, dimension))
@@ -24,23 +23,21 @@ class TestRandomUniform(unittest.TestCase):
         """Test reproducibility with same random seed."""
         expected = np.array(
             [
-                [0.37454012, 0.95071431, 0.73199394],
-                [0.59865848, 0.15601864, 0.15599452],
-                [0.05808361, 0.86617615, 0.60111501],
-                [0.70807258, 0.02058449, 0.96990985],
-                [0.83244264, 0.21233911, 0.18182497],
+                [0.77395605, 0.43887844, 0.85859792],
+                [0.69736803, 0.09417735, 0.97562235],
+                [0.7611397, 0.78606431, 0.12811363],
+                [0.45038594, 0.37079802, 0.92676499],
+                [0.64386512, 0.82276161, 0.4434142],
             ]
         )
 
-        np.random.seed(42)
-        actual = random_uniform(5, 3)
+        actual = random_uniform(5, 3, seed=42)
 
         np.testing.assert_allclose(actual, expected, rtol=1e-6)
 
     def test_random_uniform_single_point(self):
         """Test with single point."""
-        np.random.seed(42)
-        result = random_uniform(1, 2)
+        result = random_uniform(1, 2, seed=42)
 
         self.assertEqual(result.shape, (1, 2))
         self.assertTrue(np.all(result >= 0.0))
@@ -48,8 +45,7 @@ class TestRandomUniform(unittest.TestCase):
 
     def test_random_uniform_single_dimension(self):
         """Test with single dimension."""
-        np.random.seed(42)
-        result = random_uniform(5, 1)
+        result = random_uniform(5, 1, seed=42)
 
         self.assertEqual(result.shape, (5, 1))
         self.assertTrue(np.all(result >= 0.0))
@@ -57,8 +53,7 @@ class TestRandomUniform(unittest.TestCase):
 
     def test_random_uniform_large_array(self):
         """Test with larger arrays."""
-        np.random.seed(42)
-        result = random_uniform(100, 10)
+        result = random_uniform(100, 10, seed=42)
 
         self.assertEqual(result.shape, (100, 10))
         self.assertTrue(np.all(result >= 0.0))
@@ -66,22 +61,19 @@ class TestRandomUniform(unittest.TestCase):
 
     def test_random_uniform_zero_points(self):
         """Test with zero points."""
-        np.random.seed(42)
-        result = random_uniform(0, 3)
+        result = random_uniform(0, 3, seed=42)
 
         self.assertEqual(result.shape, (0, 3))
 
     def test_random_uniform_zero_dimension(self):
         """Test with zero dimensions."""
-        np.random.seed(42)
-        result = random_uniform(5, 0)
+        result = random_uniform(5, 0, seed=42)
 
         self.assertEqual(result.shape, (5, 0))
 
     def test_random_uniform_distribution_properties(self):
         """Test statistical properties of the uniform distribution."""
-        np.random.seed(42)
-        result = random_uniform(10000, 1)
+        result = random_uniform(10000, 1, seed=42)
 
         # For uniform distribution on [0, 1):
         # - Mean should be approximately 0.5
@@ -94,20 +86,16 @@ class TestRandomUniform(unittest.TestCase):
 
     def test_random_uniform_different_dimensions(self):
         """Test with various dimensions."""
-        np.random.seed(42)
-
         for dim in [1, 2, 5, 10, 20]:
-            result = random_uniform(10, dim)
+            result = random_uniform(10, dim, seed=42)
             self.assertEqual(result.shape, (10, dim))
             self.assertTrue(np.all(result >= 0.0))
             self.assertTrue(np.all(result < 1.0))
 
     def test_random_uniform_different_num_points(self):
         """Test with various numbers of points."""
-        np.random.seed(42)
-
         for num_points in [1, 10, 50, 100]:
-            result = random_uniform(num_points, 3)
+            result = random_uniform(num_points, 3, seed=42)
             self.assertEqual(result.shape, (num_points, 3))
             self.assertTrue(np.all(result >= 0.0))
             self.assertTrue(np.all(result < 1.0))
