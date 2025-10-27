@@ -6,6 +6,10 @@ pyDOE3: An experimental design package for python
 [![DOI](https://zenodo.org/badge/709347557.svg)](https://zenodo.org/doi/10.5281/zenodo.10958492)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
+[![PyPI Downloads](https://img.shields.io/pypi/dm/pyDOE3.svg?label=PyPI%20downloads)](https://pypi.org/project/pyDOE3/)
+[![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pydoe3.svg?label=Conda%20downloads)](https://anaconda.org/conda-forge/pydoe3)
+[![Python versions](https://img.shields.io/pypi/pyversions/pyDOE3.svg)](https://pypi.org/project/pyDOE3/)
+
 This package is designed to help the scientist, engineer, statistician, etc., to
 construct appropriate experimental designs.
 

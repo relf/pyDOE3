@@ -140,7 +140,7 @@ updating cluster centers based on randomly sampled points.
 
 Random K-Means designs can be created using the following syntax::
 
-    >>> random_k_means(num_points, dimension, [num_steps, initial_points, callback, random_state])
+    >>> random_k_means(num_points, dimension, [num_steps, initial_points, callback, seed])
 
 where 
 
@@ -149,7 +149,8 @@ where
 * **num_steps**: an integer that designates the number of iterations (default: 100 * num_points)
 * **initial_points**: an array of initial cluster centers (default: None, which uses random points)
 * **callback**: a callable function called at each step with current cluster centers (default: None)
-* **random_state**: an integer seed for reproducibility (default: None)
+* **seed**: an integer or ``np.random.Generator`` for reproducibility (default: None)
+* **random_state**: (Deprecated) Use ``seed`` parameter instead
 
 The output design contains cluster centers that are well-distributed across the 
 unit hypercube [0, 1]^dimension.
@@ -159,7 +160,7 @@ Examples
 
 A basic 3-point, 2-dimensional Random K-Means design::
 
-    >>> random_k_means(3, 2, random_state=42)
+    >>> random_k_means(3, 2, seed=42)
     array([[0.50047407, 0.49860013],
            [0.50168345, 0.50033893],
            [0.49956536, 0.50004765]])
@@ -167,10 +168,17 @@ A basic 3-point, 2-dimensional Random K-Means design::
 With custom initial points::
 
     >>> initial = [[0.1, 0.1], [0.5, 0.5], [0.9, 0.9]]
-    >>> random_k_means(3, 2, initial_points=initial, num_steps=50, random_state=42)
+    >>> random_k_means(3, 2, initial_points=initial, num_steps=50, seed=42)
     array([[0.24854237, 0.25041155],
            [0.50043582, 0.50058412],
            [0.75123745, 0.74896743]])
+
+Using a numpy random generator for reproducibility::
+
+    >>> import numpy as np
+    >>> rng = np.random.default_rng(42)
+    >>> random_k_means(3, 2, seed=rng)
+    array([[...]])
 
 .. index:: Random Uniform
 
@@ -180,17 +188,18 @@ Random Uniform (``random_uniform``)
 ===================================
 
 Random Uniform generates random samples from a uniform distribution over the 
-half-open interval [0, 1). This is a simple wrapper around ``numpy.random.rand`` 
+half-open interval [0, 1). This is a simple wrapper around ``numpy.random.Generator.random`` 
 that provides a consistent interface with other pyDOE3 functions.
 
 Random Uniform designs can be created using the following syntax::
 
-    >>> random_uniform(num_points, dimension)
+    >>> random_uniform(num_points, dimension, [seed])
 
 where 
 
 * **num_points**: an integer that designates the number of random points to generate (required)
 * **dimension**: an integer that designates the dimensionality of each point (required)
+* **seed**: an integer or ``np.random.Generator`` for reproducibility (default: None)
 
 The output design contains completely random points uniformly distributed in 
 the unit hypercube [0, 1)^dimension.
@@ -200,19 +209,24 @@ Examples
 
 A basic 5-point, 3-dimensional Random Uniform design::
 
-    >>> np.random.seed(42)  # For reproducibility
-    >>> random_uniform(5, 3)
-    array([[0.37454012, 0.95071431, 0.73199394],
-           [0.59865848, 0.15601864, 0.15599452], 
-           [0.05808361, 0.86617615, 0.60111501],
-           [0.70807258, 0.02058449, 0.96990985],
-           [0.83244264, 0.21233911, 0.18182497]])
+    >>> random_uniform(5, 3, seed=42)
+    array([[0.77395605, 0.43887844, 0.85859792],
+           [0.69736803, 0.09417735, 0.97562363], 
+           [0.7837985 , 0.87001399, 0.79915856],
+           [0.46147936, 0.78052918, 0.11100703],
+           [0.37859817, 0.72326423, 0.97893278]])
 
 For 2D visualization::
 
-    >>> np.random.seed(123)
-    >>> points = random_uniform(20, 2)
+    >>> points = random_uniform(20, 2, seed=123)
     >>> # Points are completely random with no structure
+
+Using a numpy random generator for reproducibility::
+
+    >>> import numpy as np
+    >>> rng = np.random.default_rng(42)
+    >>> random_uniform(5, 3, seed=rng)
+    array([[...]])
 
 .. index:: Latin-Hypercube Designs Support
 

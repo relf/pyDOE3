@@ -1,4 +1,5 @@
 import numpy as np
+from warnings import warn
 
 
 def random_k_means(
@@ -8,6 +9,7 @@ def random_k_means(
     initial_points=None,
     callback=None,
     random_state=None,
+    seed=None,
 ):
     """
     MacQueen's K-Means algorithm.
@@ -25,7 +27,9 @@ def random_k_means(
     callback : callable, optional
         Function called at each step with current cluster centers.
     random_state : int, optional
-        Random seed for reproducibility.
+        (Deprecated) Random seed for reproducibility. Use `seed` parameter instead.
+    seed : int or np.random.Generator, optional
+        Random seed or np.random.Generator for reproducibility.
 
     Returns
     -------
@@ -33,14 +37,28 @@ def random_k_means(
         Array of shape (num_points, dimension) containing the cluster centers.
     """
     if random_state is not None:
-        np.random.seed(random_state)
+        warn(
+            "The 'random_state' parameter is deprecated. "
+            "Use the 'seed' parameter instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        if seed is None:
+            seed = random_state
+
+    if seed is None:
+        rng = np.random.default_rng()
+    elif isinstance(seed, np.random.Generator):
+        rng = seed
+    else:
+        rng = np.random.default_rng(seed)
 
     if num_steps is None:
         num_steps = 100 * num_points
 
     # Initialize cluster centers
     if initial_points is None:
-        cluster_centers = np.random.rand(num_points, dimension)
+        cluster_centers = rng.random((num_points, dimension))
     else:
         cluster_centers = np.array(initial_points)
         if cluster_centers.shape != (num_points, dimension):
@@ -56,7 +74,7 @@ def random_k_means(
             callback(cluster_centers)
 
         # Sample a random point in the unit hypercube
-        x = np.random.rand(dimension)
+        x = rng.random(dimension)
 
         # Compute Euclidean distances to cluster centers
         distances = np.linalg.norm(cluster_centers - x, axis=1)
