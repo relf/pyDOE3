@@ -17,7 +17,7 @@ be described:
    All available designs can be accessed after a simple import statement::
 
     >>> from pyDOE3 import *
-    
+
 .. index:: Latin-Hypercube
 
 .. _latin_hypercube:
@@ -38,7 +38,7 @@ where
   generate for each factor (default: n)
 * **criterion**: a string that tells ``lhs`` how to sample the points
   (default: None, which simply randomizes the points within the intervals):
-  
+
   - "center" or "c": center the points within the sampling intervals
   - "maximin" or "m": maximize the minimum distance between points, but
     place the point in a randomized location within its interval
@@ -48,7 +48,7 @@ where
   - "lhsmu" : Latin hypercube with multifimensional Uniformity. Correlation between
      variable can be enforced by setting a valid correlation matrix. Description of the
      algorithm can be found in `Deutsch and Deutsch`_.
-  
+
 The output design scales all the variable ranges from zero to one which
 can then be transformed as the user wishes (like to a specific statistical
 distribution using the `scipy.stats.distributions`_ ``ppf`` (inverse
@@ -121,7 +121,7 @@ distributed with means = [1, 2, 3, 4] and standard deviations = [0.1,
            [ 0.91999246,  1.50179698,  2.70669743,  3.7826346 ],
            [ 0.97030478,  1.99322045,  3.178122  ,  4.04955409],
            [ 1.12124679,  1.22454846,  4.52414072,  3.8707982 ]])
-    
+
 .. note::
    Methods for "space-filling" designs and "orthogonal" designs are in 
    the works, so stay tuned! However, simply increasing the samples 
