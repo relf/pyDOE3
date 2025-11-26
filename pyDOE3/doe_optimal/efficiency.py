@@ -1,7 +1,7 @@
 import numpy as np
-from scipy.linalg import inv
 
 from pyDOE3.doe_optimal.utils import information_matrix
+from pyDOE3.doe_optimal.criterion import _regularized_inv
 
 
 def d_efficiency(X):
@@ -51,4 +51,4 @@ def a_efficiency(X):
     """
     M = information_matrix(X, normalized=True, alpha=0.0, X0=None)
     p = X.shape[1]
-    return 100.0 * (p / np.trace(inv(M)))
+    return 100.0 * (p / np.trace(_regularized_inv(M)))
