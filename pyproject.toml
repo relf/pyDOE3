@@ -51,7 +51,7 @@ source = "vcs"
 [tool.hatch.build.hooks.vcs]
 version-file = "pyDOE3/_version.py"
 
-[dependency-groups]
+[project.optional-dependencies]
 docs = [
     "mkdocs>=1.6.1",
     "mkdocs-material>=9.6.22",
