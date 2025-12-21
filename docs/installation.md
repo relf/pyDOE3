@@ -29,7 +29,7 @@ For using the PyPI package in your project, you can update your configuration fi
     pip install --upgrade --user pyDOE3 # (1)!
     ```
 
-    1. If you have both Python 2 and Python 3 installed, you may need to use `pip3` instead of `pip` to ensure you're installing the package for Python 3. This is much common on GNU/Linux systems.
+    1. You may need to use `pip3` instead of `pip` depending on your python installation.
 
 === "Installation in virtual environment"
 
@@ -39,7 +39,7 @@ For using the PyPI package in your project, you can update your configuration fi
     pip install --require-virtualenv --upgrade pyDOE3 # (1)!
     ```
 
-    1. If you have both Python 2 and Python 3 installed, you may need to use `pip3` instead of `pip` to ensure you're installing the package for Python 3. This is much common on GNU/Linux systems.
+    1. You may need to use `pip3` instead of `pip` depending on your python installation.
 
     !!! note
         Command to activate the virtual env depends on your platform and shell. [More info](https://docs.python.org/3/library/venv.html#how-venvs-work)

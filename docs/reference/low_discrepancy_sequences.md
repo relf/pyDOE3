@@ -17,7 +17,9 @@ This section includes the following quasi-random designs:
     All sequence functions are available with:
 
     ```python
-    >>> from pyDOE3 import *
+    >>> from pyDOE3 import (sukharev_grid, sobol_sequence,
+    ...     halton_sequence, rank1_lattice, korobov_sequence,
+    ...     cranley_patterson_shift)
     ```
 
 ## Sukharev Grid (`sukharev_grid`) {#sukharev_grid}

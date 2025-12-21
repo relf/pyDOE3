@@ -13,7 +13,7 @@ This section includes the following sampling design methods:
     All sampling design functions are available with:
 
     ```python
-    >>> from pyDOE3 import *
+    >>> from pyDOE3 import morris_sampling, saltelli_sampling
     ```
 
 ## Morris Method (`morris_sampling`) {#morris_method}

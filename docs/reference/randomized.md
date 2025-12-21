@@ -9,7 +9,7 @@ be described:
     All available designs can be accessed after a simple import statement:
 
     ```pycon
-    >>> from pyDOE3 import *
+    >>> from pyDOE3 import lhs, random_k_means, random_uniform
     ```
 
 ## Latin-Hypercube (`lhs`) {#latin-hypercube}

@@ -8,7 +8,7 @@ be described:
 !!! hint
     All available designs can be accessed after a simple import statement:
     ```pycon
-    >>> from pyDOE3 import *
+    >>> from pyDOE3 import bbdesign, ccdesign, doehlert_shell_design, doehlert_simplex_design
     ```
 
 ## Box-Behnken (`bbdesign`) {#box_behnken}

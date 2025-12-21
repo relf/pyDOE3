@@ -9,7 +9,7 @@ the number of runs.
     All available optimal design tools can be accessed after a simple import statement:
 
     ```python
-    >>> from pyDOE3.doe_optimal import *
+    >>> from pyDOE3 import optimal_design, generate_candidate_set
     ```
 
 ## Overview
