@@ -1,23 +1,34 @@
-pyDOE3: An experimental design package for python
-=================================================
+PyDOE3: An Experimental Design Package for Python
+================================================
 
 [![Tests](https://github.com/relf/pyDOE3/actions/workflows/tests.yml/badge.svg)](https://github.com/relf/pyDOE3/actions/workflows/tests.yml)
 [![Documentation](https://readthedocs.org/projects/pydoe3/badge/?version=latest)](https://pydoe3.readthedocs.io/en/latest/?badge=latest)
 [![DOI](https://zenodo.org/badge/709347557.svg)](https://zenodo.org/doi/10.5281/zenodo.10958492)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
+[![Stack Overflow](https://img.shields.io/badge/stackoverflow-Ask%20questions-blue.svg)](
+https://stackoverflow.com/questions/tagged/pydoe)
+[![codecov](https://codecov.io/gh/relf/pydoe3/branch/master/graph/badge.svg?token=DO4KFMPNM0)](https://codecov.io/gh/relf/pydoe3)
+[![License](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](./LICENSE)
+
 [![PyPI Downloads](https://img.shields.io/pypi/dm/pyDOE3.svg?label=PyPI%20downloads)](https://pypi.org/project/pyDOE3/)
 [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pydoe3.svg?label=Conda%20downloads)](https://anaconda.org/conda-forge/pydoe3)
 [![Python versions](https://img.shields.io/pypi/pyversions/pyDOE3.svg)](https://pypi.org/project/pyDOE3/)
 
-This package is designed to help the scientist, engineer, statistician, etc., to
-construct appropriate experimental designs.
+PyDOE3 is a Python package for design of experiments (DOE), enabling scientists, engineers, and statisticians to efficiently construct experimental designs.
 
-Capabilities
-------------
+- **Documentation:** https://pydoe3.readthedocs.io/en/latest/
+- **Source code:** https://github.com/relf/pyDOE3
+- **Contributing:** https://pydoe3.readthedocs.io/en/latest/contributing/#open-a-pull-request
+- **Bug reports:** https://github.com/relf/pyDOE3/issues
 
-The package currently includes functions for creating designs for any
-number of factors:
+
+Overview
+--------
+
+The package provides extensive support for design-of-experiments (DOE) methods and is capable of creating designs for any number of factors.
+
+It provides:
 
 - **Factorial Designs**
   - General Full-Factorial (``fullfact``)
@@ -60,8 +71,6 @@ number of factors:
   - Sparse Grid Design (``doe_sparse_grid``)
   - Sparse Grid Dimension (``sparse_grid_dimension``)
 
-See [Documentation](https://pydoe3.readthedocs.io).
-
 Installation
 ------------
 
@@ -69,48 +78,7 @@ Installation
 pip install pyDOE3
 ```
 
-Credits
--------
-
-`pyDOE` original code was originally converted from code by the following
-individuals for use with Scilab:
-
-- Copyright (C) 2012-2013, Michael Baudin
-- Copyright (C) 2012, Maria Christopoulou
-- Copyright (C) 2010-2011, INRIA, Michael Baudin
-- Copyright (C) 2009, Yann Collette
-- Copyright (C) 2009, CEA, Jean-Marc Martinez
-
-`pyDOE` was converted to Python by the following individual:
-
-- Copyright (c) 2014, Abraham D. Lee
-
-The following individuals forked `pyDOE` and worked on `pyDOE2`:
-
-- Copyright (C) 2018, Rickard Sjögren and Daniel Svensson
-
-`pyDOE3` is a fork of the [`pyDOE2`](https://github.com/clicumu/pyDOE2). 
-It came to life to solve bugs and issues that remained unsolved in the
-`pyDOE2` package.
-
 License
 -------
 
 This package is provided under the *BSD License* (3-clause)
-
-References
-----------
-
-- [Factorial designs](http://en.wikipedia.org/wiki/Factorial_experiment)
-- [Plackett-Burman designs](http://en.wikipedia.org/wiki/Plackett-Burman_design)
-- [Box-Behnken designs](http://en.wikipedia.org/wiki/Box-Behnken_design)
-- [Central composite designs](http://en.wikipedia.org/wiki/Central_composite_design)
-- [Doehlert Design](https://academic.oup.com/jrsssc/article/19/3/231/6882590)
-- [Latin-Hypercube designs](http://en.wikipedia.org/wiki/Latin_hypercube_sampling)
-- [Halton sequence](http://en.wikipedia.org/wiki/Halton_sequence)
-- [Sobol sequence](http://en.wikipedia.org/wiki/Sobol_sequence)
-- [Low-Discrepancy sequences](http://en.wikipedia.org/wiki/Low-discrepancy_sequence)
-- [Taguchi designs](http://en.wikipedia.org/wiki/Taguchi_methods)
-- [Generalized Subset Designs](https://doi.org/10.1021/acs.analchem.7b00506)
-- [Optimal experimental design](https://en.wikipedia.org/wiki/Optimal_experimental_design)
-- [Sparse grid](https://en.wikipedia.org/wiki/Sparse_grid)

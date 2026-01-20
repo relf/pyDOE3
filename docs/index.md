@@ -1,6 +1,6 @@
-# pyDOE3: An experimental design package for Python
+# PyDOE3: An Experimental Design Package for Python
 
-The `pyDOE3` package is designed to help the **scientist, engineer,
+The `PyDOE3` package is designed to help the **scientist, engineer,
 statistician,** etc., to construct appropriate 
 **experimental designs**.
 

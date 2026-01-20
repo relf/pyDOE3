@@ -18,7 +18,7 @@ For using the PyPI package in your project, you can update your configuration fi
 === "requirements.txt"
 
     ```
-    pyDOE3>=0.3.0
+    pyDOE3>=1.6.2
     ```
 
 ### pip

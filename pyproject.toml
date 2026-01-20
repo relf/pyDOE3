@@ -6,44 +6,44 @@ build-backend = "hatchling.build"
 name = "pyDOE3"
 dynamic = ["version"]
 description = "Design of experiments for Python"
-readme = "README.md"
 authors = [{ name = "Rémi Lafage", email = "remi.lafage@onera.fr" }]
+readme = "README.md"
 license = "BSD-3-Clause"
 keywords = [
-    "DOE",
-    "design of experiments",
-    "experimental design",
-    "optimal design",
-    "taguchi design",
-    "sparse grids",
-    "optimization",
-    "statistics",
-    "python",
+    "DOE", "design of experiments", "experimental design", "optimal design",
+    "taguchi design", "sparse grids", "optimization", "statistics", "python",
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
-    "Intended Audience :: Education",
     "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
     "License :: OSI Approved :: BSD License",
-    "Operating System :: OS Independent",
     "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Topic :: Education",
-    "Topic :: Scientific/Engineering",
-    "Topic :: Scientific/Engineering :: Mathematics",
-    "Topic :: Scientific/Engineering :: Physics",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3 :: Only",
     "Topic :: Software Development",
-    "Topic :: Software Development :: Libraries",
-    "Topic :: Software Development :: Libraries :: Python Modules",
-    "Topic :: Utilities",
+    "Topic :: Scientific/Engineering",
+    "Operating System :: OS Independent",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Operating System :: MacOS",
 ]
 dependencies = ["numpy", "scipy"]
 
 [project.urls]
+homepage = "https://pydoe3.readthedocs.io/en/latest/"
+documentation = "https://pydoe3.readthedocs.io/en/latest/reference/factorial/"
 source = "https://github.com/relf/pyDOE3"
+releasenotes = "https://github.com/relf/pyDOE3/releases/latest"
+issues = "https://github.com/relf/pyDOE3/issues"
+# TODO: provide changelog URL from docs
 
 [tool.hatch.version]
 source = "vcs"

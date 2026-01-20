@@ -28,8 +28,8 @@ The design matrix X for n points and p parameters is constructed as:
 $$
 X = \begin{bmatrix}
 1 & x_1^{(1)} & x_2^{(1)} & \cdots & (x_1^{(1)})^2 & x_1^{(1)} x_2^{(1)} & \cdots \\\\
-1 & x_1^{(2)} & x_2^{(2)} & \cdots & (x_1^{(2)})^2 & x_1^{(2)} x_2^{(2)} & \cdots \\
-\vdots & \vdots & \vdots & & \vdots & \vdots & \\
+1 & x_1^{(2)} & x_2^{(2)} & \cdots & (x_1^{(2)})^2 & x_1^{(2)} x_2^{(2)} & \cdots \\\\
+\vdots & \vdots & \vdots & & \vdots & \vdots & \\\\
 \end{bmatrix}
 $$
 where each row corresponds to a candidate point and each column to a model term.

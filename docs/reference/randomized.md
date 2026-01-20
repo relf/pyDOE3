@@ -14,7 +14,14 @@ be described:
 
 ## Latin-Hypercube (`lhs`) {#latin-hypercube}
 
-![Latin-hypercube design](../assets/images/lhs.png)
+<iframe 
+    src="/assets/images/lhs.png" 
+    width="280" 
+    height="280" 
+    frameborder="0" 
+    style="display: block; margin: 0 auto;">
+</iframe>
+<!-- ![Latin-hypercube design](../assets/images/lhs.png) -->
 
 Latin-hypercube designs can be created using the following simple syntax:
 

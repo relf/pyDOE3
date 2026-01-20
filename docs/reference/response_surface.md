@@ -13,7 +13,7 @@ be described:
 
 ## Box-Behnken (`bbdesign`) {#box_behnken}
 
-![Box-Behnken design](http://www.itl.nist.gov/div898/handbook/pri/section3/gifs/bb.gif)
+![Box-Behnken design](../assets/images/pbdesign.png)
 
 Box-Behnken designs can be created using the following simple syntax:
 
