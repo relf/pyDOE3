@@ -1,5 +1,5 @@
-site_name: pyDOE3
-site_description: Design of experiments for Python
+site_name: PyDOE3
+site_description: Design of Experiments for Python
 site_url: https://pydoe3.readthedocs.io/
 docs_dir: docs
 site_dir: build/docs
@@ -50,8 +50,8 @@ theme:
         name: Switch to light mode
 
   # Logo and favicon
-  favicon: assets/images/pydoe-white.ico
-  logo: assets/images/pydoe-white.svg
+  favicon: assets/images/pydoe.ico
+  logo: assets/images/pydoe-white-outline.svg
 
   # Font configuration
   font:
@@ -115,8 +115,6 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/relf/pyDOE3
-    - icon: fontawesome/brands/github
-      link: https://github.com/pyDOE/pyDOE3
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/pyDOE3
 
