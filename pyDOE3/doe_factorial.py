@@ -400,7 +400,7 @@ def _n_fac_at_res(n, res):
     """Calculate number of possible factors for fractional factorial
     design with `n` base factors at resolution `res`.
     """
-    return sum(binom(n, r) for r in range(res - 1, n)) + n
+    return n + sum(binom(n, r) for r in range(res-1, n+1))
 
 
 ################################################################################
