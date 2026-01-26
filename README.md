@@ -83,10 +83,10 @@ License
 
 This package is provided under the *BSD License* (3-clause)
 
-Deprecation Status
-------------------
+Status
+------
 
-pyDOE3 will no longer be actively maintained and will be officially deprecated after this release.
+pyDOE3 will no longer be actively maintained.
 
 The project originated as a continuation of PyDOE, but active development has
 since returned to the main **PyDOE** package. New features, bug fixes, and long-term

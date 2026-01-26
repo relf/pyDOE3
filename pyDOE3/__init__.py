@@ -21,7 +21,6 @@ The following individuals forked `pyDOE2` and worked on `pyDOE3`:
 - Copyright (C) 2023 - Rémi Lafage
 """
 
-import warnings
 from pyDOE3.doe_box_behnken import bbdesign
 from pyDOE3.doe_composite import ccdesign
 from pyDOE3.doe_factorial import (
@@ -101,14 +100,3 @@ __all__ = [
 ]
 
 from ._version import __version__  # pyright: ignore[reportMissingImports] # noqa
-
-warnings.warn(
-    "pyDOE3 will no longer be actively maintained and "
-    "will be officially deprecated after this release.\n\n"
-    "Please migrate to the PyDOE package:\n"
-    "  * PyPI Repository:       https://pypi.org/org/pydoe/\n"
-    "  * Documentation:         https://pydoe.github.io/pydoe/\n"
-    "  * Source Repository:     https://github.com/pydoe/pydoe\n",
-    category=DeprecationWarning,
-    stacklevel=2,
-)
