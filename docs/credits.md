@@ -1,7 +1,9 @@
-The evolution of pyDOE3 reflects contributions from multiple individuals and communities over time.
+The evolution of PyDOE reflects contributions from multiple individuals and communities over time.
 
 ## Scilab Scidoe
-The code that eventually became pyDOE was originally developed for Scilab by:
+![scidoe](./assets/images/scidoe-logo.png)
+
+The code that eventually became PyDOE was originally developed for Scilab by:
 
 - Copyright (c) 2012–2013, Michael Baudin
 - Copyright (c) 2012, Maria Christopoulou
@@ -13,8 +15,11 @@ The code that eventually became pyDOE was originally developed for Scilab by:
 <a href="https://gitlab.com/scilab/forge/scidoe" style="color: #484848;">gitlab.com/scilab/forge/scidoe</a>  
 <a href="https://atoms.scilab.org/toolboxes/scidoe" style="color: #484848;">atoms.scilab.org/toolboxes/scidoe</a>
 
-## pyDOE
-The original Scilab code was converted to Python and packaged as pyDOE by:
+## PyDOE
+![PyDOE](./assets/images/pydoe-banner.svg#only-light)
+![PyDOE](./assets/images/pydoe-banner-white.svg#only-dark)
+
+The original Scilab code was converted to Python and packaged as PyDOE by:
 
 - Copyright (c) 2014, Abraham D. Lee
 
@@ -23,23 +28,25 @@ This version provided Python users with factorial, fractional factorial, Placket
 > Source:  
 <a href="https://github.com/tisimst/pyDOE" style="color: #484848;">github.com/tisimst/pydoe</a>
 
-## pyDOE2
-pyDOE2 is a fork of pyDOE, created by:
+## PyDOE2
+PyDOE2 is a fork of PyDOE, created by:
 
 - Copyright (c) 2018, Rickard Sjögren and Daniel Svensson
 
-pyDOE2 added features such as Generalized Subset Designs (GSD) and modernized the codebase.
+PyDOE2 added features such as Generalized Subset Designs (GSD) and modernized the codebase.
 
 > Source:  
 <a href="https://github.com/clicumu/pyDOE2" style="color: #484848;">github.com/clicumu/pydoe2</a>
 
-## pyDOE3
-pyDOE3 is a fork of pyDOE2, created by:
+## PyDOE3
+PyDOE3 is a fork of PyDOE2, created by:
 
 - Copyright (c) 2023, Rémi Lafage
 
-pyDOE3 added several new design families (optimal, sparse, Taguchi, sensitivity), fixed
+PyDOE3 added several new design families (optimal, sparse, Taguchi, sensitivity), fixed
 long-standing bugs, and continued active development.
 
 > Source:  
 <a href="https://github.com/relf/pyDOE3" style="color: #484848;">github.com/relf/pydoe3</a>
+
+> All previous versions and forks, including PyDOE2 and PyDOE3, have now been consolidated under a single active repository: <a href="https://github.com/pydoe/pydoe" style="color: #484848;">github.com/pydoe/pydoe</a>
