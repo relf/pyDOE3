@@ -43,7 +43,6 @@ documentation = "https://pydoe3.readthedocs.io/en/latest/reference/factorial/"
 source = "https://github.com/relf/pyDOE3"
 releasenotes = "https://github.com/relf/pyDOE3/releases/latest"
 issues = "https://github.com/relf/pyDOE3/issues"
-# TODO: provide changelog URL from docs
 
 [tool.hatch.version]
 source = "vcs"

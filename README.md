@@ -8,7 +8,7 @@ PyDOE3: An Experimental Design Package for Python
 
 [![Stack Overflow](https://img.shields.io/badge/stackoverflow-Ask%20questions-blue.svg)](
 https://stackoverflow.com/questions/tagged/pydoe)
-[![codecov](https://codecov.io/gh/relf/pydoe3/branch/master/graph/badge.svg?token=DO4KFMPNM0)](https://codecov.io/gh/relf/pydoe3)
+[![codecov](https://codecov.io/gh/pydoe/pydoe/branch/master/graph/badge.svg?token=DO4KFMPNM0)](https://codecov.io/gh/pydoe/pydoe)
 [![License](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](./LICENSE)
 
 [![PyPI Downloads](https://img.shields.io/pypi/dm/pyDOE3.svg?label=PyPI%20downloads)](https://pypi.org/project/pyDOE3/)
@@ -82,3 +82,18 @@ License
 -------
 
 This package is provided under the *BSD License* (3-clause)
+
+Status
+------
+
+pyDOE3 will no longer be actively maintained.
+
+The project originated as a continuation of PyDOE, but active development has
+since returned to the main **PyDOE** package. New features, bug fixes, and long-term
+support will be provided there.
+
+Users are encouraged to migrate to PyDOE:
+
+- **PyPI:** https://pypi.org/org/pydoe/
+- **Documentation:** https://pydoe.github.io/pydoe/
+- **Source code:** https://github.com/pydoe/pydoe
